@@ -318,7 +318,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .roll-preview .slate { padding: 34px 16px 16px; font-size: .6rem; gap: 6px 12px; }
 .roll-preview .slate::before { height: 16px; }
 .roll-preview .slate-v { font-size: 1rem; }
-@media (hover: none) { .roll-preview { display: none; } }
+/* touch screens (iPad, iPhone): tap a title to play its clip; the tapped row stays lit */
+@media (hover: none) {
+  .credits[data-layout="centered"] .roll.has-active li { opacity: .3; }
+  .credits[data-layout="centered"] .roll li.is-active { opacity: 1; }
+  .credits[data-layout="centered"] .roll li.is-active .t { transform: scale(1.04); color: var(--accent); }
+  .credits[data-layout="centered"] .roll li.is-active .r, .credits[data-layout="centered"] .roll li.is-active .t small { color: var(--hero-ink); }
+  .credits .roll li[data-i] { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .roll-preview.is-clip { width: min(86vw, 440px); }
+}
 @media (prefers-reduced-motion: reduce) { .roll-preview .wip::after, .wip-rec::before, .wip-tag::before { animation: none; } }
 
 /* cta + footer */
@@ -729,12 +737,11 @@ const FILMS = [
   /* ---------- end credits: preview follows the cursor (clip, else in-production card, else poster, else slate) ---------- */
   const pv = $('#roll-preview'), pvImg = $('img.tone', pv), pvImgFull = $('img.full', pv), pvVideo = $('video', pv), pvSlate = $('.slate', pv), pvTag = $('.tc', pv);
   const pvWip = $('.wip', pv), pvTc = $('.pv-tc', pv);
-  const usePreview = fine && !reduce;
-  const pvState = { on: false, x: mx, y: my, s: .6, r: 0, mode: '', wipStart: 0, tcF: -1 };
-  if (usePreview) {
-    roll.addEventListener('pointerover', e => {
-      const li = e.target.closest('li[data-i]');
-      if (!li) return;
+  // mouse: the preview follows the cursor on hover. Touch (iPad, iPhone): tap a title and the preview sits just above it.
+  const usePreview = !reduce;
+  const touchPreview = !fine && !reduce;
+  const pvState = { on: false, x: mx, y: my, s: .6, r: 0, mode: '', wipStart: 0, tcF: -1, li: null };
+  const showPreview = li => {
       const f = FILMS[+li.dataset.i];
       const mode = f.clip ? 'clip' : f.status ? 'wip' : f.poster ? 'poster' : 'slate';
       pvState.on = true; pv.classList.add('is-on'); pvTag.textContent = f.year;
@@ -764,8 +771,39 @@ const FILMS = [
         pvSlate.hidden = false;
         pvSlate.innerHTML = `<span class="slate-k">Prod.</span><span class="slate-v">${esc(f.title)}</span><span class="slate-note">Clip coming soon</span>`;
       }
+  };
+  const hidePreview = () => {
+    pvState.on = false; pv.classList.remove('is-on'); pvVideo.pause();
+    if (pvState.li) pvState.li.classList.remove('is-active');
+    pvState.li = null; roll.classList.remove('has-active');
+  };
+  // where the preview should sit for a tapped row: centred, just above the row (below it when there's no room above)
+  const touchTarget = li => {
+    // measure the visible text (role line to studio line), not the row's padding
+    const top = (li.querySelector('.r') || li).getBoundingClientRect().top;
+    const bottom = (li.querySelector('.t') || li).getBoundingClientRect().bottom;
+    const h = pv.offsetHeight, w = pv.offsetWidth;
+    const above = top - 12 - h > 72;
+    return { x: (innerWidth - w) / 2 - 28, y: above ? top - 12 - h / 2 : bottom + 12 + h / 2 };
+  };
+  if (usePreview && !touchPreview) {
+    roll.addEventListener('pointerover', e => {
+      const li = e.target.closest('li[data-i]');
+      if (li) showPreview(li);
     });
-    roll.addEventListener('pointerleave', () => { pvState.on = false; pv.classList.remove('is-on'); pvVideo.pause(); });
+    roll.addEventListener('pointerleave', hidePreview);
+  }
+  if (touchPreview) {
+    roll.addEventListener('click', e => {
+      const li = e.target.closest('li[data-i]');
+      if (!li) return;
+      if (pvState.li === li) { hidePreview(); return; }   // tap the same title again to close it
+      if (pvState.li) pvState.li.classList.remove('is-active');
+      pvState.li = li; li.classList.add('is-active'); roll.classList.add('has-active');
+      showPreview(li);   // runs inside the tap, so iOS lets the muted clip play
+      const t = touchTarget(li); pvState.x = t.x; pvState.y = t.y; pvState.r = 0;
+    });
+    document.addEventListener('click', e => { if (pvState.li && !roll.contains(e.target)) hidePreview(); });
   }
 
   /* ---------- mouse float + magnetic ---------- */
@@ -839,9 +877,17 @@ const FILMS = [
         pvTc.textContent = `${p2(Math.floor(fr / 86400))}:${p2(Math.floor(fr / 1440) % 60)}:${p2(Math.floor(fr / 24) % 60)}:${p2(fr % 24)}`;
       }
     }
+    if (touchPreview && pvState.li) {
+      // stay with the tapped row while scrolling; close once it leaves the screen
+      const r = pvState.li.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) hidePreview();
+      else { const t = touchTarget(pvState.li); pvState.x += (t.x - pvState.x) * .35; pvState.y += (t.y - pvState.y) * .35; }
+    }
     if (usePreview) {
-      pvState.x += (mx - pvState.x) * .14; pvState.y += (my - pvState.y) * .14;
-      pvState.r += (Math.max(-12, Math.min(12, (mx - pvState.x) * .08)) - pvState.r) * .2;
+      if (!touchPreview) {
+        pvState.x += (mx - pvState.x) * .14; pvState.y += (my - pvState.y) * .14;
+        pvState.r += (Math.max(-12, Math.min(12, (mx - pvState.x) * .08)) - pvState.r) * .2;
+      } else pvState.r = 0;
       pvState.s += ((pvState.on ? 1 : .6) - pvState.s) * .16;
       pv.style.transform = `translate3d(${pvState.x + 28}px, ${pvState.y - pv.offsetHeight / 2}px, 0) rotate(${pvState.r}deg) scale(${pvState.s})`;
     }
