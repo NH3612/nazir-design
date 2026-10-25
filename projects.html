@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Nazir Hossain Feature Films</title>
+<!-- link preview (WhatsApp, LinkedIn, X, iMessage). Domain: nazir.design; change here if it moves. -->
+<meta name="description" content="Feature film and series credits, including Mufasa: The Lion King, Transformers: Rise of the Beasts, Sonic the Hedgehog 2, Kraven the Hunter and Alien: Earth.">
+<meta name="theme-color" content="#0c1312">
+<link rel="canonical" href="https://nazir.design/projects.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nazir Hossain">
+<meta property="og:title" content="Feature Films · Nazir Hossain">
+<meta property="og:description" content="Feature film and series credits, including Mufasa: The Lion King, Transformers: Rise of the Beasts, Sonic the Hedgehog 2, Kraven the Hunter and Alien: Earth.">
+<meta property="og:url" content="https://nazir.design/projects.html">
+<meta property="og:image" content="https://nazir.design/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nazir Hossain, character animator. Bringing still things to life.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Feature Films · Nazir Hossain">
+<meta name="twitter:description" content="Feature film and series credits, including Mufasa: The Lion King, Transformers: Rise of the Beasts, Sonic the Hedgehog 2, Kraven the Hunter and Alien: Earth.">
+<meta name="twitter:image" content="https://nazir.design/og-image.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-16 0 100 100%22%3E%3Cstyle%3Epath%7Bfill:#131918%7D%40media (prefers-color-scheme:dark)%7Bpath%7Bfill:#eaf1ee%7D%7D%3C/style%3E%3Cpath d=%22M0 30.1 L10.8 24.16 L59 65.38 L59 25.35 L68 30.3 L68 69.9 L57.2 75.84 L9 34.62 L9 74.65 L0 69.7 Z M20 14.6 L29 9.65 L29 33.73 L20 26.03 Z M39 0 L48 4.95 L48 49.97 L39 42.27 Z M29 100 L20 95.05 L20 50.03 L29 57.73 Z M48 85.4 L39 90.35 L39 66.28 L48 73.97 Z%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Jost:wght@200;300;400;500&display=swap">
+<style>
+/* Layout: a three-panel hero (clip · title · clip), a filterable two-column staggered
+   film grid with hover-to-play clips, then an end-credits filmography roll. */
+:root {
+  --bg: #e7ebe9;
+  --ink: #131918;
+  --muted: #56645f;
+  --line: rgba(19, 25, 24, .16);
+  --accent: #2c8770;
+  --accent-ink: #ffffff;
+  --hero-bg: #0c1312;
+  --hero-ink: #eaf1ee;
+  --hero-muted: #9aaca6;
+  --hero-line: rgba(234, 241, 238, .16);
+  --frame: #0f1716;
+  --frame-ink: #e6eeeb;
+  --font-display: "Jost", "Futura", "Avenir Next", "Century Gothic", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --header-h: 68px;
+  --gutter-l: max(clamp(16px, 4vw, 56px), env(safe-area-inset-left, 0px));
+  --gutter-r: max(clamp(16px, 4vw, 56px), env(safe-area-inset-right, 0px));
+  color-scheme: light;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1514; --ink: #e4ebe8; --muted: #8fa19b; --line: rgba(228, 235, 232, .14);
+    --accent: #6ac7ab; --accent-ink: #0a100f; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1514; --ink: #e4ebe8; --muted: #8fa19b; --line: rgba(228, 235, 232, .14);
+  --accent: #6ac7ab; --accent-ink: #0a100f; color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+[hidden] { display: none !important; }
+img, video { max-width: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-mono); font-size: 15px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
+}
+::selection { background: var(--accent); color: var(--accent-ink); }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { padding-left: var(--gutter-l); padding-right: var(--gutter-r); max-width: 1520px; margin-inline: auto; }
+
+.label {
+  display: inline-flex; align-items: center; gap: .7em; margin: 0;
+  font: 500 .72rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .14em; color: var(--muted);
+}
+.label::before { content: ""; width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg); }
+.h2 { font: 300 clamp(2.3rem, 5.6vw, 4.8rem)/.94 var(--font-display); text-transform: uppercase; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+.mono-copy { max-width: 56ch; font-size: .9rem; color: var(--muted); margin: 0; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .8em;
+  height: 58px; padding-inline: 30px; border-radius: 2px;
+  font: 500 .74rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .12em;
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+.btn-solid { background: var(--ink); color: var(--bg); }
+.btn-solid:hover { background: var(--accent); color: var(--accent-ink); }
+.btn-outline { border: 1px solid var(--ink); color: var(--ink); }
+.btn-outline:hover { background: var(--ink); color: var(--bg); }
+
+/* ambient graph-editor background: sits behind content, shows through light sections only */
+#ambient { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
+#ambient[data-style="off"] { display: none; }
+
+/* header */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+  padding-top: env(safe-area-inset-top, 0px);
+  mix-blend-mode: difference; color: #fff; pointer-events: none;
+}
+.site-header .wrap { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; max-width: none; }
+.logo { pointer-events: auto; display: inline-flex; align-items: center; color: inherit; }
+/* NH mark; on hover the H strokes part like frames pulling apart */
+.logo .mark { height: 36px; width: auto; display: block; overflow: visible; }
+.logo .mark .up, .logo .mark .lo { transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.logo:hover .mark .up { transform: translateY(-4px); }
+.logo:hover .mark .lo { transform: translateY(4px); }
+@media (max-width: 767px) { .logo .mark { height: 30px; } }
+.header-right { display: flex; align-items: center; gap: 20px; pointer-events: auto; }
+.crumb { font: 500 .7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .14em; }
+.menu-btn { pointer-events: auto; width: 44px; height: 44px; display: grid; place-items: center; }
+.menu-btn .dots { display: grid; grid-template-columns: repeat(2, 5px); gap: 5px; transition: transform .5s cubic-bezier(.7,0,.2,1); }
+.menu-btn .dots i { width: 5px; height: 5px; background: currentColor; display: block; }
+.menu-btn[aria-expanded="true"] .dots { transform: rotate(45deg); }
+
+/* menu */
+.menu {
+  position: fixed; inset: 0; z-index: 55; background: var(--hero-bg); color: var(--hero-ink);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px) + 24px);
+  padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+  padding-left: var(--gutter-l); padding-right: var(--gutter-r);
+}
+.menu-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.menu-link { display: flex; align-items: baseline; gap: 18px; overflow: hidden; font: 300 min(clamp(2.4rem, 8vw, 6.4rem), 12vh)/1.02 var(--font-display); text-transform: uppercase; }
+.menu-link small { font: 500 .72rem/1 var(--font-mono); color: var(--hero-muted); letter-spacing: .1em; }
+.menu-link span { display: inline-block; transition: color .3s; }
+.menu-link:hover span, .menu-link[aria-current="page"] span { color: var(--accent); }
+.menu-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .78rem; color: var(--hero-muted); text-transform: uppercase; letter-spacing: .1em; }
+
+/* hero triptych */
+.tri {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr);
+  height: min(92svh, 860px); min-height: 560px;
+  padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+  border-bottom: 1px solid var(--line);
+}
+.panel { position: relative; overflow: hidden; background: var(--frame); }
+.panel video { position: absolute; inset: -6% 0; width: 100%; height: 112%; object-fit: cover; display: block; }
+.panel.left video { object-position: 44% 50%; }
+.panel.right video { object-position: 18% 50%; }
+.panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, color-mix(in oklab, var(--frame) 55%, transparent), transparent 40%); pointer-events: none; }
+.tc {
+  position: absolute; z-index: 1; font: 500 .64rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase;
+  color: color-mix(in oklab, var(--frame-ink) 80%, transparent); font-variant-numeric: tabular-nums;
+}
+.tc.bl { bottom: 16px; left: 16px; } .tc.tr { top: 16px; right: 16px; }
+.tri-center {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; text-align: center;
+  padding: 40px clamp(20px, 3vw, 48px);
+}
+.tri-title { margin: 0; font: 300 clamp(2.6rem, 5.4vw, 5.6rem)/.92 var(--font-display); text-transform: uppercase; letter-spacing: -.02em; }
+.tri-title .line { display: block; overflow: hidden; padding-bottom: .06em; margin-bottom: -.06em; }
+.tri-title .line > span { display: inline-block; }
+.tri-title em { font-style: normal; color: var(--accent); }
+.tri-center .mono-copy { max-width: 40ch; font-size: .82rem; }
+
+/* ticker */
+.ticker {
+  overflow: hidden; white-space: nowrap; border-bottom: 1px solid var(--line);
+  font: 500 .78rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .12em; padding-block: 18px;
+}
+.ticker-track { display: flex; width: max-content; will-change: transform; }
+.ticker-group { display: flex; flex-shrink: 0; }
+.ticker-group span { padding-inline: 1.3em; }
+.ticker-group .sep { color: var(--accent); padding-inline: 0; }
+
+/* filmography grid */
+.films { padding-block: clamp(80px, 10vw, 140px); }
+.films-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px 48px; padding-bottom: clamp(40px, 5vw, 64px); }
+.films-head .left { display: grid; gap: 22px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; height: 38px; padding-inline: 16px; border-radius: 999px;
+  border: 1px solid var(--line); font-size: .68rem; text-transform: uppercase; letter-spacing: .1em;
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+.chip .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+.chip:hover { border-color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip[aria-pressed="true"] .n { color: inherit; opacity: .6; }
+.cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(18px, 3vw, 40px); align-items: start; max-width: 980px; margin-inline: auto; }
+.cols[data-n="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
+.cols[data-n="2"] .col.c { display: none; }
+.col { display: grid; gap: clamp(16px, 2vw, 28px); min-width: 0; }
+.col.b { padding-top: clamp(100px, 12vw, 200px); }
+.film { border: 1px solid var(--line); background: var(--bg); min-width: 0; transition: border-color .3s; will-change: transform; }
+.film:hover { border-color: var(--accent); }
+.film-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--line); font-size: .62rem; text-transform: uppercase; letter-spacing: .1em; }
+.film-head h3 { margin: 0; font: 500 .68rem/1.35 var(--font-mono); letter-spacing: .1em; }
+.film-head h3 sup { color: var(--accent); font-size: .7em; margin-left: 2px; }
+.film-head .role { color: var(--muted); text-align: right; }
+.film-media { position: relative; overflow: hidden; aspect-ratio: 2 / 3; background: var(--frame); max-width: 100%; }
+.film-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+.film:hover .film-media img { transform: scale(1.05); }
+/* posters sit in the site's two colours; the full-colour copy wipes up from the bottom on hover */
+.film-media img.tone { filter: url(#duotone) contrast(1.05); }
+.film-media img.full {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path .7s cubic-bezier(.65,0,.35,1), transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+.film:hover .film-media img.full, .film.is-color .film-media img.full { clip-path: inset(0 0 0 0); }
+.film-media .wipe-line { position: absolute; left: 0; right: 0; top: 100%; height: 2px; background: var(--accent); opacity: 0; pointer-events: none; z-index: 1; }
+.film:hover .film-media .wipe-line, .film.is-color .film-media .wipe-line { animation: wipeline .7s cubic-bezier(.65,0,.35,1) forwards; }
+@keyframes wipeline { 0% { top: 100%; opacity: 1; } 85% { opacity: 1; } 100% { top: 0; opacity: 0; } }
+.film-body { display: grid; gap: 14px; padding: 14px; }
+.film-body p { margin: 0; font-size: .74rem; line-height: 1.65; color: var(--muted); }
+.film-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px dashed var(--line); padding-top: 14px; gap: 12px; }
+.film-meta div { display: grid; gap: 2px; min-width: 0; }
+.film-meta dt { font-size: .6rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+.film-meta dd { margin: 0; font-size: .66rem; text-transform: uppercase; letter-spacing: .06em; overflow-wrap: anywhere; }
+.slate {
+  position: absolute; inset: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); align-content: center; gap: 8px 18px;
+  padding: 52px clamp(18px, 3vw, 32px) 28px; color: var(--frame-ink);
+  font-size: .68rem; line-height: 1.4; text-transform: uppercase; letter-spacing: .1em;
+}
+.slate::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 24px; opacity: .85;
+  background: repeating-linear-gradient(-45deg, var(--frame-ink) 0 14px, var(--frame) 14px 28px);
+}
+.slate-k { color: color-mix(in oklab, var(--frame-ink) 55%, transparent); padding-top: .2em; }
+.slate-v { font: 300 clamp(1.1rem, 2vw, 1.5rem)/1.1 var(--font-display); letter-spacing: 0; }
+.slate-note { grid-column: 1 / -1; margin-top: 12px; color: var(--accent); }
+.empty { grid-column: 1 / -1; padding: 48px 0; text-align: center; color: var(--muted); }
+
+/* end credits: two layouts, picked by ROLL_LAYOUT in the script */
+.credits { background: var(--hero-bg); color: var(--hero-ink); padding-block: clamp(96px, 12vw, 170px); overflow: hidden; }
+.credits .label { color: var(--hero-muted); }
+.credits-head { display: grid; justify-items: center; gap: 22px; text-align: center; padding-bottom: clamp(48px, 6vw, 88px); }
+.credits[data-layout="centered"] .roll { list-style: none; margin: 0 auto; padding: 0; display: grid; gap: 0; max-width: 900px; }
+.credits[data-layout="centered"] .roll li { display: grid; justify-items: center; gap: 10px; text-align: center; padding-block: 28px; }
+.credits[data-layout="centered"] .roll li + li::before { content: ""; order: -1; width: 6px; height: 6px; margin-bottom: 28px; background: var(--accent); transform: rotate(45deg); }
+.credits[data-layout="centered"] .roll .r { order: 0; font-size: .7rem; line-height: 1.4; text-transform: uppercase; letter-spacing: .16em; color: var(--hero-muted); }
+.credits[data-layout="centered"] .roll .d { display: none; }
+.credits[data-layout="centered"] .roll .t { order: 1; font: 300 clamp(1.5rem, 3vw, 2.4rem)/1.1 var(--font-display); text-transform: uppercase; text-wrap: balance; }
+.credits[data-layout="centered"] .roll .t small { display: block; margin-top: 10px; font: 400 .7rem/1.4 var(--font-mono); letter-spacing: .14em; color: var(--hero-muted); }
+
+/* layout "hover": big titles, clip preview follows the cursor */
+.credits[data-layout="hover"] .credits-head { grid-template-columns: minmax(0, 1fr) auto; justify-items: start; text-align: left; align-items: end; }
+.credits[data-layout="hover"] .credits-head .label, .credits[data-layout="hover"] .credits-head .h2 { grid-column: 1; }
+.roll-count { grid-column: 2; grid-row: 2; justify-self: end; margin: 0; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--hero-muted); }
+.credits[data-layout="centered"] .roll-count { display: none; }
+.credits[data-layout="hover"] .roll { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--hero-line); }
+.credits[data-layout="hover"] .roll li {
+  display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: baseline; gap: 8px 24px;
+  padding-block: clamp(16px, 2vw, 26px); border-bottom: 1px solid var(--hero-line); transition: opacity .4s;
+}
+.credits[data-layout="hover"] .roll .n { font-size: .72rem; letter-spacing: .1em; color: var(--hero-muted); font-variant-numeric: tabular-nums; }
+.credits[data-layout="hover"] .roll .t {
+  font: 300 clamp(1.8rem, 4.6vw, 4rem)/1.02 var(--font-display); text-transform: uppercase; letter-spacing: -.01em; text-wrap: balance;
+  transition: transform .6s cubic-bezier(.2,.8,.2,1), color .3s;
+}
+.credits[data-layout="hover"] .roll .m { text-align: right; font-size: .68rem; line-height: 1.7; letter-spacing: .12em; text-transform: uppercase; color: var(--hero-muted); white-space: nowrap; }
+.credits[data-layout="centered"] .roll li { transition: opacity .4s; }
+.credits[data-layout="centered"] .roll .t { transition: transform .6s cubic-bezier(.2,.8,.2,1), color .3s; }
+.credits[data-layout="centered"] .roll .r, .credits[data-layout="centered"] .roll .t small { transition: color .3s; }
+@media (hover: hover) {
+  .credits[data-layout="centered"] .roll:hover li { opacity: .3; }
+  .credits[data-layout="centered"] .roll li:hover { opacity: 1; }
+  .credits[data-layout="centered"] .roll li:hover .t { transform: scale(1.06); color: var(--accent); }
+  .credits[data-layout="centered"] .roll li:hover .r, .credits[data-layout="centered"] .roll li:hover .t small { color: var(--hero-ink); }
+  .credits[data-layout="hover"] .roll:hover li { opacity: .35; }
+  .credits[data-layout="hover"] .roll li:hover { opacity: 1; }
+  .credits[data-layout="hover"] .roll li:hover .t { transform: translateX(28px); color: var(--accent); }
+}
+.roll-preview {
+  position: fixed; top: 0; left: 0; z-index: 50; pointer-events: none;
+  width: clamp(220px, 22vw, 340px); aspect-ratio: 16 / 10; max-width: 100%;
+  background: var(--frame); border-radius: 3px; overflow: hidden;
+  opacity: 0; transition: opacity .35s; will-change: transform;
+}
+.roll-preview.is-on { opacity: 1; }
+.roll-preview.is-poster { aspect-ratio: 2 / 3; width: clamp(160px, 14vw, 230px); }
+.roll-preview.is-clip { aspect-ratio: 2.2 / 1; width: clamp(280px, 26vw, 440px); }
+/* in-production card: scanlines, a slow scan bar, blinking REC and a running timecode */
+.roll-preview .wip {
+  position: absolute; inset: 0; display: grid; align-content: center; justify-items: start; gap: 8px; padding: 18px 20px; overflow: hidden;
+  color: var(--frame-ink); background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .035) 0 1px, transparent 1px 3px), var(--frame);
+}
+.roll-preview .wip::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 35%; top: -35%; pointer-events: none;
+  background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--accent) 22%, transparent), transparent);
+  animation: wipscan 2.6s linear infinite;
+}
+@keyframes wipscan { to { top: 100%; } }
+.wip-rec { display: flex; align-items: center; gap: 8px; font-size: .58rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.wip-rec::before, .wip-tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: rec 1.4s steps(2, jump-none) infinite; }
+@keyframes rec { 50% { opacity: .15; } }
+.wip-title { font: 300 1.1rem/1.1 var(--font-display); text-transform: uppercase; max-width: 90%; }
+.wip-sub { font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: color-mix(in oklab, var(--frame-ink) 60%, transparent); }
+/* running SMPTE timecode (hh:mm:ss:ff at 24 fps) on clips and the in-production card */
+.roll-preview .pv-tc { position: absolute; right: 14px; bottom: 12px; z-index: 2; font-size: .6rem; letter-spacing: .1em; font-variant-numeric: tabular-nums; color: color-mix(in oklab, var(--frame-ink) 80%, transparent); text-shadow: 0 1px 6px rgba(0, 0, 0, .8); }
+.roll-preview .tc { z-index: 2; text-shadow: 0 1px 6px rgba(0, 0, 0, .8); }
+.wip-tag {
+  display: inline-flex; align-items: center; gap: 6px; margin-left: .7em; vertical-align: .35em;
+  font: 500 .56rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent);
+  border: 1px solid color-mix(in oklab, var(--accent) 55%, transparent); border-radius: 999px; padding: 5px 9px; white-space: nowrap;
+}
+.credits[data-layout="centered"] .wip-tag { margin: 0 0 4px; vertical-align: baseline; }
+.roll-preview img.tone { filter: url(#duotone) contrast(1.05); }
+.roll-preview img.full { clip-path: inset(100% 0 0 0); }
+.roll-preview img.full.wipe { animation: pvwipe .7s .12s cubic-bezier(.65,0,.35,1) forwards; }
+@keyframes pvwipe { to { clip-path: inset(0 0 0 0); } }
+.roll-preview img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.roll-preview video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.roll-preview .slate { padding: 34px 16px 16px; font-size: .6rem; gap: 6px 12px; }
+.roll-preview .slate::before { height: 16px; }
+.roll-preview .slate-v { font-size: 1rem; }
+@media (hover: none) { .roll-preview { display: none; } }
+@media (prefers-reduced-motion: reduce) { .roll-preview .wip::after, .wip-rec::before, .wip-tag::before { animation: none; } }
+
+/* cta + footer */
+.cta { padding-block: clamp(96px, 12vw, 170px) clamp(64px, 8vw, 110px); display: grid; gap: 32px; }
+.cta-title { margin: 0; font: 300 clamp(2.8rem, 9vw, 8.4rem)/.9 var(--font-display); text-transform: uppercase; letter-spacing: -.025em; }
+.cta-title span { display: block; }
+.cta-title .accent { color: var(--accent); padding-left: .9em; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.footer {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px;
+  border-top: 1px solid var(--line);
+  padding-block: 28px calc(56px + env(safe-area-inset-bottom, 0px));
+  font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted);
+}
+.footer a:hover { color: var(--ink); }
+
+/* timeline */
+.timeline {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 58; pointer-events: none;
+  padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  mix-blend-mode: difference; color: #fff;
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: end; gap: 16px;
+  font: 500 .64rem/1 var(--font-mono); letter-spacing: .1em; font-variant-numeric: tabular-nums;
+}
+.timeline .ruler {
+  position: relative; height: 9px; opacity: .55;
+  background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 12px) bottom / 100% 5px no-repeat,
+              repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 96px) bottom / 100% 9px no-repeat;
+}
+.timeline .head { position: absolute; bottom: 0; left: 0; width: 1px; height: 16px; background: currentColor; }
+.timeline .head::before { content: ""; position: absolute; top: -5px; left: -4px; width: 9px; height: 6px; background: currentColor; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+
+/* cursor */
+.cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; z-index: 100; pointer-events: none; opacity: 0; transition: opacity .3s; }
+html.has-cursor .cursor-dot, html.has-cursor .cursor-ring { opacity: 1; }
+html.has-cursor.cursor-out .cursor-dot, html.has-cursor.cursor-out .cursor-ring { opacity: 0; }
+html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
+.cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: #fff; mix-blend-mode: difference; }
+.cursor-ring { mix-blend-mode: difference; }
+.cursor-ring .r {
+  display: grid; place-items: center; width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1px solid #fff; border-radius: 50%;
+  transition: width .45s cubic-bezier(.2,.8,.2,1), height .45s cubic-bezier(.2,.8,.2,1), margin .45s cubic-bezier(.2,.8,.2,1), background-color .3s, border-color .3s;
+}
+.cursor-ring .r span { font: 500 .66rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .12em; opacity: 0; transition: opacity .2s; color: var(--accent-ink); }
+.cursor-ring.is-link .r { width: 60px; height: 60px; margin: -30px 0 0 -30px; }
+.cursor-ring.is-label { mix-blend-mode: normal; }
+.cursor-ring.is-label .r { width: 96px; height: 96px; margin: -48px 0 0 -48px; background: var(--accent); border-color: var(--accent); }
+.cursor-ring.is-label .r span { opacity: 1; }
+
+@media (max-width: 900px) {
+  .tri { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto minmax(220px, 1fr); height: auto; min-height: 0; }
+  .tri-center { grid-column: 1 / -1; grid-row: 1; padding-block: 56px 48px; }
+  .panel { min-height: 240px; }
+}
+@media (max-width: 767px) {
+  :root { --header-h: 60px; }
+  .crumb { display: none; }
+  .cols, .cols[data-n="2"] { grid-template-columns: minmax(0, 1fr); max-width: 460px; }
+  .cols .col.c { display: none; }
+  .credits[data-layout="hover"] .roll li { grid-template-columns: 36px minmax(0, 1fr); }
+  .credits[data-layout="hover"] .roll .m { grid-column: 2; text-align: left; white-space: normal; }
+  .credits[data-layout="hover"] .credits-head { grid-template-columns: minmax(0, 1fr); }
+  .roll-count { grid-column: 1; grid-row: auto; justify-self: start; }
+  .col.b { padding-top: 0; }
+  .timeline { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .film-media img, .film-media img.full { transition: none; }
+  .film-media .wipe-line { display: none; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="duotone" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values=".33 .33 .33 0 0  .33 .33 .33 0 0  .33 .33 .33 0 0  0 0 0 1 0"/>
+    <feComponentTransfer>
+      <feFuncR type="table" tableValues="0.06 0.80"/>
+      <feFuncG type="table" tableValues="0.09 0.93"/>
+      <feFuncB type="table" tableValues="0.08 0.86"/>
+    </feComponentTransfer>
+  </filter>
+</svg>
+
+<!-- Ambient background. Set data-style="off" to turn it off (the previous look). -->
+<canvas id="ambient" aria-hidden="true" data-style="off"></canvas>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Nazir Hossain, home"><svg class="mark" viewBox="0 0 68 100" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 30.1 L10.8 24.16 L59 65.38 L59 25.35 L68 30.3 L68 69.9 L57.2 75.84 L9 34.62 L9 74.65 L0 69.7 Z"/><path class="up" fill="currentColor" d="M20 14.6 L29 9.65 L29 33.73 L20 26.03 Z M39 0 L48 4.95 L48 49.97 L39 42.27 Z"/><path class="lo" fill="currentColor" d="M29 100 L20 95.05 L20 50.03 L29 57.73 Z M48 85.4 L39 90.35 L39 66.28 L48 73.97 Z"/></svg></a>
+    <div class="header-right">
+      <span class="crumb">Feature films</span>
+      <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="menu" id="menu" hidden aria-label="Site">
+  <ul class="menu-links">
+    <li><a class="menu-link" href="index.html"><small>01</small><span>Home</span></a></li>
+    <li><a class="menu-link" href="index.html#work"><small>02</small><span>Work</span></a></li>
+    <li><a class="menu-link" href="projects.html" aria-current="page"><small>03</small><span>Feature films</span></a></li>
+    <li><a class="menu-link" href="index.html#hybrid"><small>04</small><span>AI workflow</span></a></li>
+    <li><a class="menu-link" href="#contact"><small>05</small><span>Contact</span></a></li>
+  </ul>
+  <div class="menu-foot"><span>nh3612@outlook.com</span><span><a href="https://www.instagram.com/eloversn.hossain/" target="_blank" rel="noopener">Instagram</a> · <a href="https://vimeo.com/user74733342" target="_blank" rel="noopener">Vimeo</a> · <a href="https://www.imdb.com/name/nm14446708/" target="_blank" rel="noopener">IMDb</a> · <a href="https://www.linkedin.com/in/nh-animator/" target="_blank" rel="noopener">LinkedIn</a></span></div>
+</nav>
+
+<main>
+  <!-- HERO TRIPTYCH -->
+  <section class="tri" id="top">
+    <div class="panel left" aria-hidden="true">
+      <video src="films/clip-01.mp4" poster="films/still-01.jpg" muted loop playsinline preload="metadata" data-speed="1"></video>
+      <span class="tc tr">Reel · SH 01</span><span class="tc bl" data-frame>F 0000</span>
+    </div>
+    <div class="tri-center">
+      <p class="label" data-float="8">Feature films</p>
+      <h1 class="tri-title" aria-label="On the big screen">
+        <span class="line" data-float="14" aria-hidden="true"><span>On the</span></span>
+        <span class="line" data-float="26" aria-hidden="true"><span>big <em>screen</em></span></span>
+      </h1>
+      <p class="mono-copy" data-float="6">Feature film credits as a character and creature animator. Robots, creatures, vehicles and the shots I'm proud of, from first blocking to final.</p>
+    </div>
+    <div class="panel right" aria-hidden="true">
+      <video src="films/clip-04.mp4" poster="films/still-04.jpg" muted loop playsinline preload="metadata" data-speed="1"></video>
+      <span class="tc tr">Reel · SH 04</span><span class="tc bl" data-frame>F 0000</span>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track"><div class="ticker-group">
+      <span>Creature animation</span><span class="sep">×</span>
+      <span>Mech &amp; robots</span><span class="sep">→</span>
+      <span>Character acting</span><span class="sep">*</span>
+      <span>Vehicles</span><span class="sep">×</span>
+      <span>Previz</span><span class="sep">→</span>
+      <span>Hero shots</span><span class="sep">*</span>
+    </div></div>
+  </div>
+
+  <!-- FILMOGRAPHY -->
+  <section class="films wrap" id="films">
+    <div class="films-head">
+      <div class="left">
+        <p class="label">Filmography</p>
+        <h2 class="h2" data-skew>Selected<br>features</h2>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filter by type"></div>
+    </div>
+    <div class="cols" id="cols">
+      <div class="col a"></div>
+      <div class="col b" data-speed="1"></div>
+      <div class="col c"></div>
+    </div>
+  </section>
+
+  <!-- END CREDITS -->
+  <section class="credits" id="credits" data-layout="centered">
+    <div class="wrap">
+      <div class="credits-head">
+        <p class="label">End credits</p>
+        <h2 class="h2">Full filmography</h2>
+        <p class="roll-count" id="roll-count"></p>
+      </div>
+      <ol class="roll" id="roll"></ol>
+      <div class="roll-preview" id="roll-preview" aria-hidden="true"><img class="tone" alt="" hidden><img class="full" alt="" hidden><div class="wip" hidden><span class="wip-rec"></span><span class="wip-title"></span><span class="wip-sub">Clips after release</span></div><span class="pv-tc" hidden>00:00:00:00</span><video muted loop playsinline preload="none"></video><div class="slate" hidden></div><span class="tc bl"></span></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="wrap cta" id="contact">
+    <h2 class="cta-title" data-skew>
+      <span data-float="14">Have a feature</span>
+      <span class="accent" data-float="34">in production?</span>
+    </h2>
+    <p class="mono-copy">I'm available for feature and episodic work as a character, creature or mech animator. Send me the brief and the schedule.</p>
+    <div class="cta-actions">
+      <a class="btn btn-solid" href="index.html#contact" data-magnetic>Get in touch</a>
+      <a class="btn btn-outline" href="index.html" data-magnetic>Back to home</a>
+    </div>
+  </section>
+  <footer class="wrap footer">
+    <span>© 2026 Nazir Hossain</span>
+    <span>Made at 24 fps</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+</main>
+
+<div class="timeline" aria-hidden="true">
+  <span id="tc">00:00:00:00</span>
+  <div class="ruler"><span class="head" id="playhead"></span></div>
+</div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"><div class="r"><span></span></div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* Edit this list to update the cards and the end-credits roll.
+   poster: a file name in films/posters/ (e.g. 'mufasa.jpg'), or '' to show a slate until it's ready.
+   clip:   a file name in films/credits/ without .mp4 (e.g. 'mufasa'); plays in the
+           Full filmography hover preview.
+   status: e.g. 'In production'; shows a tag in the credits and an in-production
+           card in the hover preview instead of a clip.
+   credits: false keeps a film in the poster grid but out of the Full filmography list. */
+const FILMS = [
+  { title: 'Chiranjeevi Hanuman: The Eternal', studio: 'Galleri5', year: '2026', role: 'Senior Animator', type: 'Feature film', poster: 'hanuman.jpg', clip: '', status: 'In production',
+    note: 'A feature built on a hybrid pipeline, blending AI and traditional animation to cut turnaround time.' },
+  { title: 'Operation Safed Sagar', studio: 'Atomic Arts', year: '2025', role: 'Animator', type: 'Series', poster: 'safed-sagar.jpg', clip: 'safed-sagar',
+    note: 'Fighter jet chases and aerial combat for a Netflix series, with real weight, sharp timing and cinematic impact.' },
+  { title: 'Alien: Earth', studio: 'MPC', year: '2025', role: 'Animator', type: 'Series', poster: 'alien-earth.jpg', clip: 'alien-earth',
+    note: 'Animation for the FX and Hulu series that brings the Alien franchise to Earth for the first time.' },
+  { title: 'Snow White', studio: 'MPC', year: '2025', role: 'Animator', type: 'Feature film', poster: 'snow-white.jpg', clip: '', credits: false,
+    note: "Photoreal animal animation for Disney's live-action musical, shaped with supervisors and directors." },
+  { title: 'Mufasa: The Lion King', studio: 'MPC', year: '2024', role: 'Animator', type: 'Feature film', poster: 'mufasa.jpg', clip: 'mufasa',
+    note: 'Photoreal animal animation for a fully CG feature, shaped with supervisors and directors.' },
+  { title: 'Kraven the Hunter', studio: 'MPC', year: '2024', role: 'Animator', type: 'Feature film', poster: 'kraven.jpg', clip: 'kraven',
+    note: 'Realistic animal and creature animation for a live-action feature.' },
+  { title: 'Leo', studio: 'MPC', year: '2023', role: 'Animator', type: 'Feature film', poster: 'leo.jpg', clip: '', credits: false,
+    note: 'Photoreal creature animation for the full-CG hyena in the opening sequence of this Tamil action feature.' },
+  { title: 'Transformers: Rise of the Beasts', studio: 'MPC', year: '2023', role: 'Animator', type: 'Feature film', poster: 'transformers.jpg', clip: 'transformers',
+    note: 'Robot and creature animation with weight and impact. This work earned the Standing Ovation award at MPC.' },
+  { title: 'Sonic the Hedgehog 2', studio: 'MPC', year: '2022', role: 'Animator', type: 'Feature film', poster: 'sonic2.jpg', clip: 'sonic2',
+    note: 'Animation for a fast, stylised hero living inside a live-action world.' },
+  { title: 'Prey', studio: 'MPC', year: '2022', role: 'Animator', type: 'Feature film', poster: 'prey.jpg', clip: 'prey',
+    note: 'Photoreal creature and animal animation for a live-action feature.' },
+  { title: 'Vikings: Valhalla', studio: 'MPC', year: '2022', role: 'Animator', type: 'Series', poster: 'vikings-valhalla.jpg', clip: 'vikings-valhalla',
+    note: 'Photoreal animation for an episodic Netflix series.' },
+  { title: 'Fast & Furious Spy Racers', studio: 'Technicolor', year: '2019', role: 'Junior Animator', type: 'Animated series', poster: 'spy-racers.jpg', clip: 'spy-racers',
+    note: 'Key animator across three seasons, on high-speed chases and vehicle work. Star Performer award at Technicolor.' }
+];
+
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const G = window.gsap, ST = window.ScrollTrigger;
+  if (G && ST) G.registerPlugin(ST);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  /* ---------- render cards, filters and credits ---------- */
+  const cards = FILMS.map((f, i) => {
+    const el = document.createElement('article');
+    el.className = 'film'; el.dataset.type = f.type;
+    el.innerHTML = `
+      <header class="film-head"><h3>${esc(f.title)}<sup>${String(i + 1).padStart(2, '0')}</sup></h3><span class="role">${esc(f.role)}</span></header>
+      <div class="film-media">
+        ${f.poster
+          ? `<img class="tone" src="films/posters/${esc(f.poster)}" alt="Poster for ${esc(f.title)}" loading="lazy"><img class="full" src="films/posters/${esc(f.poster)}" alt="" aria-hidden="true" loading="lazy"><span class="wipe-line"></span>`
+          : `<div class="slate"><span class="slate-k">Prod.</span><span class="slate-v">${esc(f.title)}</span><span class="slate-k">Studio</span><span>${esc(f.studio)}</span><span class="slate-k">Role</span><span>${esc(f.role)}</span><span class="slate-note">${f.status ? esc(f.status) + ' · Poster after release' : 'Poster coming soon'}</span></div>`}
+      </div>
+      <div class="film-body">
+        <p>${esc(f.note)}</p>
+        <dl class="film-meta">
+          <div><dt>Studio</dt><dd>${esc(f.studio)}</dd></div>
+          <div><dt>Year</dt><dd>${esc(f.year)}</dd></div>
+          <div><dt>Type</dt><dd>${esc(f.type)}</dd></div>
+        </dl>
+      </div>`;
+    return el;
+  });
+
+  const types = ['All', ...new Set(FILMS.map(f => f.type))];
+  const filters = $('#filters');
+  types.forEach((t, i) => {
+    const b = document.createElement('button');
+    b.className = 'chip'; b.type = 'button'; b.dataset.type = t;
+    b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    const n = t === 'All' ? FILMS.length : FILMS.filter(f => f.type === t).length;
+    b.innerHTML = `${esc(t)} <span class="n">${String(n).padStart(2, '0')}</span>`;
+    filters.append(b);
+  });
+
+  /* End credits layout: 'centered' = stacked end-credits style,
+     'hover' = left-aligned big titles (kept as a backup).
+     Both get the hover highlight and the clip preview that follows the cursor. */
+  const ROLL_LAYOUT = 'centered';
+  const roll = $('#roll');
+  $('#credits').dataset.layout = ROLL_LAYOUT;
+  const ROLL_FILMS = FILMS.map((f, i) => ({ f, i })).filter(x => x.f.credits !== false);
+  $('#roll-count').textContent = String(ROLL_FILMS.length).padStart(2, '0') + ' credits';
+  roll.innerHTML = ROLL_LAYOUT === 'centered'
+    ? ROLL_FILMS.map(({ f, i }) => `<li data-i="${i}">${f.status ? `<em class="wip-tag">${esc(f.status)}</em>` : ''}<span class="r">${esc(f.role)}</span><span class="d"></span><span class="t">${esc(f.title)}<small>${esc(f.studio)} · ${esc(f.year)}</small></span></li>`).join('')
+    : ROLL_FILMS.map(({ f, i }) => `<li data-i="${i}"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="t">${esc(f.title)}${f.status ? `<em class="wip-tag">${esc(f.status)}</em>` : ''}</span><span class="m">${esc(f.role)}<br>${esc(f.studio)} · ${esc(f.year)}</span></li>`).join('');
+
+  const colEls = [$('.col.a'), $('.col.b'), $('.col.c')], colB = colEls[1];
+  const mqOne = matchMedia('(max-width: 767px)'), mqTwo = matchMedia('(max-width: 1023px)');
+  const colCount = () => mqOne.matches ? 1 : mqTwo.matches ? 2 : 3;
+  let current = 'All';
+  const distribute = () => {
+    const vis = cards.filter(c => current === 'All' || c.dataset.type === current);
+    cards.forEach(c => { if (!vis.includes(c)) c.remove(); });
+    const n = colCount();
+    $('#cols').dataset.n = n;
+    vis.forEach((c, i) => colEls[i % n].append(c));
+    return vis;
+  };
+  distribute();
+  [mqOne, mqTwo].forEach(m => m.addEventListener('change', () => { distribute(); ST && ST.refresh(); }));
+
+  filters.addEventListener('click', e => {
+    const b = e.target.closest('.chip');
+    if (!b || b.dataset.type === current) return;
+    $$('.chip', filters).forEach(c => c.setAttribute('aria-pressed', String(c === b)));
+    current = b.dataset.type;
+    const swap = () => {
+      const vis = distribute();
+      if (G && !reduce) G.fromTo(vis, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: 'power3.out', stagger: .06, clearProps: 'opacity' });
+      ST && ST.refresh();
+    };
+    if (G && !reduce) G.to(cards.filter(c => c.isConnected), { opacity: 0, y: -20, duration: .3, ease: 'power2.in', onComplete: swap });
+    else swap();
+  });
+
+  /* ---------- hero panel clips ---------- */
+  if (!reduce) $$('.panel video').forEach(v => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+
+  /* ---------- poster cards: on touch screens, colour wipes in when a card is centred ---------- */
+  if (!fine && !reduce && 'IntersectionObserver' in window) {
+    const colorIO = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('is-color', e.isIntersecting)), { rootMargin: '-35% 0px -35% 0px' });
+    cards.forEach(c => colorIO.observe(c));
+  }
+
+  /* ---------- poster cards: tilt toward the mouse ---------- */
+  if (G && fine && !reduce) {
+    cards.forEach(c => {
+      G.set(c, { transformPerspective: 1000 });
+      const rx = G.quickTo(c, 'rotationX', { duration: .6, ease: 'power3.out' });
+      const ry = G.quickTo(c, 'rotationY', { duration: .6, ease: 'power3.out' });
+      const sc = G.quickTo(c, 'scale', { duration: .6, ease: 'power3.out' });
+      c.addEventListener('pointermove', e => {
+        const r = c.getBoundingClientRect();
+        ry(((e.clientX - r.left) / r.width - .5) * 10);
+        rx(-((e.clientY - r.top) / r.height - .5) * 8);
+        sc(1.02);
+      });
+      c.addEventListener('pointerleave', () => { rx(0); ry(0); sc(1); });
+    });
+  }
+
+  /* ---------- tickers ---------- */
+  const tickers = $$('.ticker').map(el => {
+    const track = $('.ticker-track', el), group = $('.ticker-group', el);
+    group.innerHTML = group.innerHTML.repeat(3);
+    const clone = group.cloneNode(true); clone.setAttribute('aria-hidden', 'true'); track.append(clone);
+    return { track, x: 0, dir: -1, base: 2.2 };
+  });
+
+  /* ---------- smooth scroll ---------- */
+  let lenis = null, vel = 0, scrollDir = 1, lastY = scrollY;
+  if (!reduce && window.Lenis) {
+    lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
+    lenis.on('scroll', e => { vel = e.velocity || 0; if (e.direction) scrollDir = e.direction; if (ST) ST.update(); });
+    if (G) { G.ticker.add(t => lenis.raf(t * 1000)); G.ticker.lagSmoothing(0); }
+    else { const raf = t => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf); }
+  }
+
+  /* ---------- menu ---------- */
+  const menu = $('#menu'), menuBtn = $('#menu-btn');
+  const openMenu = () => {
+    menu.hidden = false; menuBtn.setAttribute('aria-expanded', 'true'); lenis && lenis.stop();
+    if (G && !reduce) {
+      G.fromTo(menu, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: .8, ease: 'expo.inOut' });
+      G.fromTo($$('.menu-link span', menu), { yPercent: 110 }, { yPercent: 0, duration: 1, ease: 'expo.out', stagger: .06, delay: .3 });
+    }
+  };
+  const closeMenu = () => {
+    if (menu.hidden) return;
+    menuBtn.setAttribute('aria-expanded', 'false'); lenis && lenis.start();
+    if (G && !reduce) G.to(menu, { clipPath: 'inset(100% 0 0 0)', duration: .7, ease: 'expo.inOut', onComplete: () => { menu.hidden = true; menu.style.clipPath = ''; } });
+    else menu.hidden = true;
+  };
+  menuBtn.addEventListener('click', () => menu.hidden ? openMenu() : closeMenu());
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute('href');
+    const target = id.length > 1 && document.getElementById(id.slice(1));
+    if (!target) return;
+    e.preventDefault();
+    const wasOpen = !menu.hidden;
+    closeMenu();
+    const go = () => lenis ? lenis.scrollTo(target, { duration: 1.6 }) : target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    wasOpen ? setTimeout(go, 350) : go();
+  });
+
+  /* ---------- cursor ---------- */
+  const dot = $('.cursor-dot'), ring = $('.cursor-ring'), ringLabel = $('.cursor-ring span');
+  let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+  const useCursor = fine && !reduce;
+  if (useCursor) {
+    document.documentElement.classList.add('has-cursor');
+    document.addEventListener('pointerover', e => {
+      const lab = e.target.closest('[data-cursor]'), link = e.target.closest('a, button');
+      ring.classList.toggle('is-label', !!lab);
+      ring.classList.toggle('is-link', !lab && !!link);
+      if (lab) ringLabel.textContent = lab.dataset.cursor;
+    });
+    document.addEventListener('mouseout', e => { if (!e.relatedTarget) document.documentElement.classList.add('cursor-out'); });
+    document.addEventListener('mouseover', () => document.documentElement.classList.remove('cursor-out'));
+  }
+
+  /* ---------- end credits: preview follows the cursor (clip, else in-production card, else poster, else slate) ---------- */
+  const pv = $('#roll-preview'), pvImg = $('img.tone', pv), pvImgFull = $('img.full', pv), pvVideo = $('video', pv), pvSlate = $('.slate', pv), pvTag = $('.tc', pv);
+  const pvWip = $('.wip', pv), pvTc = $('.pv-tc', pv);
+  const usePreview = fine && !reduce;
+  const pvState = { on: false, x: mx, y: my, s: .6, r: 0, mode: '', wipStart: 0, tcF: -1 };
+  if (usePreview) {
+    roll.addEventListener('pointerover', e => {
+      const li = e.target.closest('li[data-i]');
+      if (!li) return;
+      const f = FILMS[+li.dataset.i];
+      const mode = f.clip ? 'clip' : f.status ? 'wip' : f.poster ? 'poster' : 'slate';
+      pvState.on = true; pv.classList.add('is-on'); pvTag.textContent = f.year;
+      pv.classList.toggle('is-poster', mode === 'poster');
+      pv.classList.toggle('is-clip', mode === 'clip' || mode === 'wip');
+      pvImg.hidden = pvImgFull.hidden = pvVideo.hidden = pvSlate.hidden = pvWip.hidden = true;
+      pvState.mode = mode; pvState.tcF = -1;
+      pvTc.hidden = !(mode === 'clip' || mode === 'wip');
+      if (mode !== 'clip') pvVideo.pause();
+      if (mode === 'clip') {
+        const src = 'films/credits/' + f.clip + '.mp4';
+        if (pvVideo.getAttribute('src') !== src) { pvVideo.poster = 'films/credits/' + f.clip + '.jpg'; pvVideo.src = src; }
+        pvVideo.hidden = false;
+        const p = pvVideo.play(); if (p && p.catch) p.catch(() => {});
+      } else if (mode === 'wip') {
+        $('.wip-rec', pv).textContent = 'REC · ' + f.status;
+        $('.wip-title', pv).textContent = f.title;
+        pvWip.hidden = false; pvState.wipStart = performance.now();
+      } else if (mode === 'poster') {
+        const src = 'films/posters/' + f.poster;
+        if (pvImg.getAttribute('src') !== src) {
+          pvImg.src = src; pvImgFull.src = src;
+          pvImgFull.classList.remove('wipe'); void pvImgFull.offsetWidth; pvImgFull.classList.add('wipe');
+        }
+        pvImg.hidden = false; pvImgFull.hidden = false;
+      } else {
+        pvSlate.hidden = false;
+        pvSlate.innerHTML = `<span class="slate-k">Prod.</span><span class="slate-v">${esc(f.title)}</span><span class="slate-note">Clip coming soon</span>`;
+      }
+    });
+    roll.addEventListener('pointerleave', () => { pvState.on = false; pv.classList.remove('is-on'); pvVideo.pause(); });
+  }
+
+  /* ---------- mouse float + magnetic ---------- */
+  const floaters = [];
+  if (G && fine && !reduce) {
+    $$('[data-float]').forEach(el => floaters.push({ d: parseFloat(el.dataset.float), qx: G.quickTo(el, 'x', { duration: 1.2, ease: 'power3.out' }), qy: G.quickTo(el, 'y', { duration: 1.2, ease: 'power3.out' }) }));
+    $$('[data-magnetic]').forEach(el => {
+      const qx = G.quickTo(el, 'x', { duration: .5, ease: 'power3.out' }), qy = G.quickTo(el, 'y', { duration: .5, ease: 'power3.out' });
+      el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); qx((e.clientX - (r.left + r.width / 2)) * .35); qy((e.clientY - (r.top + r.height / 2)) * .45); });
+      el.addEventListener('pointerleave', () => { qx(0); qy(0); });
+    });
+  }
+  addEventListener('pointermove', e => {
+    mx = e.clientX; my = e.clientY;
+    const nx = mx / innerWidth - .5, ny = my / innerHeight - .5;
+    floaters.forEach(f => { f.qx(nx * f.d); f.qy(ny * f.d); });
+  }, { passive: true });
+
+  /* ---------- scroll-driven motion ---------- */
+  const skewers = [];
+  if (G && ST && !reduce) {
+    G.from('.tri-title .line > span', { yPercent: 115, duration: 1.3, ease: 'expo.out', stagger: .1, delay: .1 });
+    G.from(['.tri-center .label', '.tri-center .mono-copy'], { y: 20, opacity: 0, duration: 1, ease: 'power3.out', stagger: .1, delay: .45 });
+    G.from('.panel', { clipPath: 'inset(100% 0 0 0)', duration: 1.4, ease: 'expo.inOut', stagger: .12 });
+    $$('.panel video').forEach(v => G.fromTo(v, { yPercent: -4 }, { yPercent: 4, ease: 'none', scrollTrigger: { trigger: '.tri', start: 'top top', end: 'bottom top', scrub: true } }));
+    G.fromTo(colB, { y: 160 }, { y: -160, ease: 'none', scrollTrigger: { trigger: '#cols', start: 'top bottom', end: 'bottom top', scrub: true } });
+    $$('.h2, .cta-title').forEach(el => G.fromTo(el, { yPercent: 18 }, { yPercent: -10, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } }));
+    G.fromTo('#roll li', { y: 60 }, { y: -30, ease: 'none', stagger: .04, scrollTrigger: { trigger: '#roll', start: 'top bottom', end: 'bottom top', scrub: true } });
+    $$('[data-skew]').forEach(el => skewers.push(G.quickTo(el, 'skewY', { duration: .6, ease: 'power3.out' })));
+  }
+  document.fonts && document.fonts.ready.then(() => ST && ST.refresh());
+
+  /* ---------- main loop ---------- */
+  const tcEl = $('#tc'), head = $('#playhead'), ruler = $('.timeline .ruler');
+  const panelFrames = $$('.panel').map(p => ({ v: $('video', p), el: $('[data-frame]', p), f: -1 }));
+  let lastFrameShown = -1, last = performance.now(), skewNow = 0;
+  const loop = now => {
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    if (!lenis) { const y = scrollY; vel = y - lastY; lastY = y; if (vel) scrollDir = Math.sign(vel); }
+    else vel *= .92;
+    if (!reduce) {
+      const boost = Math.min(Math.abs(vel) * .45, 14);
+      tickers.forEach(tk => {
+        tk.x += (tk.base + boost) * tk.dir * scrollDir * dt;
+        if (tk.x <= -50) tk.x += 50; if (tk.x > 0) tk.x -= 50;
+        tk.track.style.transform = `translate3d(${tk.x}%,0,0)`;
+      });
+      const sk = Math.max(-5, Math.min(5, -vel * .14));
+      if (Math.abs(sk - skewNow) > .02) { skewNow = sk; skewers.forEach(f => f(sk)); }
+    }
+    panelFrames.forEach(p => {
+      const f = Math.floor((p.v.currentTime || 0) * 24);
+      if (f !== p.f) { p.f = f; p.el.textContent = 'F ' + String(f).padStart(4, '0'); }
+    });
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const prog = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    const frames = Math.round(prog * 1440);
+    if (frames !== lastFrameShown) {
+      lastFrameShown = frames;
+      const ff = frames % 24, ss = Math.floor(frames / 24) % 60, mm = Math.floor(frames / 1440);
+      tcEl.textContent = `00:${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}:${String(ff).padStart(2, '0')}`;
+      head.style.transform = `translateX(${prog * ruler.clientWidth}px)`;
+    }
+    if (usePreview && !pvTc.hidden) {
+      const fr = pvState.mode === 'clip'
+        ? Math.floor((pvVideo.currentTime || 0) * 24)
+        : Math.floor((performance.now() - pvState.wipStart) / 1000 * 24);
+      if (fr !== pvState.tcF) {
+        pvState.tcF = fr;
+        const p2 = n => String(n).padStart(2, '0');
+        pvTc.textContent = `${p2(Math.floor(fr / 86400))}:${p2(Math.floor(fr / 1440) % 60)}:${p2(Math.floor(fr / 24) % 60)}:${p2(fr % 24)}`;
+      }
+    }
+    if (usePreview) {
+      pvState.x += (mx - pvState.x) * .14; pvState.y += (my - pvState.y) * .14;
+      pvState.r += (Math.max(-12, Math.min(12, (mx - pvState.x) * .08)) - pvState.r) * .2;
+      pvState.s += ((pvState.on ? 1 : .6) - pvState.s) * .16;
+      pv.style.transform = `translate3d(${pvState.x + 28}px, ${pvState.y - pv.offsetHeight / 2}px, 0) rotate(${pvState.r}deg) scale(${pvState.s})`;
+    }
+    if (useCursor) {
+      rx += (mx - rx) * .16; ry += (my - ry) * .16;
+      dot.style.transform = `translate3d(${mx}px,${my}px,0)`;
+      ring.style.transform = `translate3d(${rx}px,${ry}px,0)`;
+    }
+    requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+})();
+</script>
+<script>
+/* Ambient background: faint Graph Editor curves that slowly re-key, with a time cursor.
+   Colours follow the theme; it drifts a little with the mouse and holds still for reduced motion. */
+(() => {
+  const cv = document.getElementById('ambient');
+  if (!cv || cv.dataset.style === 'off') return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx = cv.getContext('2d');
+  const col = { ink: '#131918', accent: '#2c8770' };
+  let w = 0, h = 0;
+  const readCol = () => {
+    const s = getComputedStyle(document.documentElement);
+    col.ink = s.getPropertyValue('--ink').trim() || col.ink;
+    col.accent = s.getPropertyValue('--accent').trim() || col.accent;
+  };
+  const fit = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    w = innerWidth; h = innerHeight;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+  readCol(); fit();
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readCol);
+  new MutationObserver(readCol).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  let mx = 0, my = 0, ox = 0, oy = 0;
+  addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, { passive: true });
+  const CURVES = [
+    { c: 'ink', a: .10, amp: .22, ph: 0, base: .40 },
+    { c: 'accent', a: .20, amp: .18, ph: 2.1, base: .55, keys: true },
+    { c: 'ink', a: .06, amp: .26, ph: 4.2, base: .70 }
+  ];
+  const draw = t => {
+    ox += (mx * 18 - ox) * .04; oy += (my * 12 - oy) * .04;
+    ctx.clearRect(0, 0, w, h);
+    ctx.lineWidth = 1;
+    // grid
+    ctx.globalAlpha = .045; ctx.strokeStyle = col.ink; ctx.beginPath();
+    const gx = 96, gy = 72;
+    for (let x = (ox % gx) - gx; x < w + gx; x += gx) { ctx.moveTo(Math.round(x) + .5, 0); ctx.lineTo(Math.round(x) + .5, h); }
+    for (let y = (oy % gy) - gy; y < h + gy; y += gy) { ctx.moveTo(0, Math.round(y) + .5); ctx.lineTo(w, Math.round(y) + .5); }
+    ctx.stroke();
+    // time cursor sweeping across every 20 s
+    const cx = ((t / 20) % 1) * w;
+    ctx.globalAlpha = .12; ctx.strokeStyle = col.accent; ctx.beginPath(); ctx.moveTo(cx + .5, 0); ctx.lineTo(cx + .5, h); ctx.stroke();
+    // curves
+    CURVES.forEach(cu => {
+      const n = 7, keys = [];
+      for (let k = 0; k < n; k++) {
+        keys.push([-w * .05 + w * 1.1 * k / (n - 1) + ox, h * (cu.base + cu.amp * .5 * Math.sin(t * .18 + k * 1.25 + cu.ph)) + oy]);
+      }
+      ctx.globalAlpha = cu.a; ctx.strokeStyle = col[cu.c]; ctx.lineWidth = 1.2; ctx.beginPath();
+      for (let k = 0; k < n - 1; k++) {
+        const [a, b] = keys[k], [d, e] = keys[k + 1], m = (d - a) / 2.6;
+        if (!k) ctx.moveTo(a, b);
+        ctx.bezierCurveTo(a + m, b, d - m, e, d, e);
+      }
+      ctx.stroke();
+      if (cu.keys) keys.forEach(([x, y]) => {
+        ctx.globalAlpha = .12; ctx.strokeStyle = col.ink; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(x - 22, y); ctx.lineTo(x + 22, y); ctx.stroke();
+        ctx.globalAlpha = .32; ctx.fillStyle = col.accent; ctx.fillRect(x - 3, y - 3, 6, 6);
+      });
+    });
+    ctx.globalAlpha = 1;
+  };
+  addEventListener('resize', () => { fit(); if (reduce) draw(0); });
+  if (reduce) { draw(0); return; }
+  const loop = n => { draw(n / 1000); requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
