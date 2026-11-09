@@ -666,10 +666,7 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
   #gx-stage .vp { font-size: 12px; }
 }
 
-/* ---------- experience: tags pop in, equation tiles act out their formula on hover ---------- */
-.tags[data-reveal].pre .tag { opacity: 0; transform: translateY(12px) scale(.85); }
-.tags[data-reveal].is-in .tag { animation: tagIn .55s cubic-bezier(.34, 1.56, .64, 1) forwards; animation-delay: calc(var(--k) * 110ms + 120ms); }
-@keyframes tagIn { to { opacity: 1; transform: none; } }
+/* ---------- experience: equation tiles act out their formula on hover ---------- */
 
 .eq-notes .eq { position: relative; outline: none; transition: background-color .3s, transform .35s cubic-bezier(.2, .8, .2, 1); }
 .eq-notes .eq:hover, .eq-notes .eq:focus-visible { transform: translateY(-2px); }
@@ -710,7 +707,6 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .eq .fx { display: none; }
-  .tags[data-reveal] .tag { opacity: 1 !important; transform: none !important; animation: none !important; }
 }
 </style>
 </head>
@@ -838,7 +834,7 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
         <div class="card-top"><span class="card-num">01</span><h3>Galleri5</h3><span class="card-meta">2026 – Present</span></div>
         <div class="card-body">
           <div class="card-info">
-            <div class="tags" data-reveal><span class="tag">Senior animator</span><span class="tag">Creature</span><span class="tag">Maya</span><span class="tag">AI animation</span></div>
+            <div class="tags"><span class="tag">Senior animator</span><span class="tag">Creature</span><span class="tag">Maya</span><span class="tag">AI animation</span></div>
             <div class="bottom">
               <p class="card-desc">I lead the animation and AI video teams, and run Chiranjeevi Hanuman end to end, from first blocking to final delivery.</p>
               <p class="card-role">Role <b>·</b> Senior Animator, Animation &amp; GenAI Lead</p>
@@ -2011,14 +2007,6 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
     flow.classList.add('pre');
     const fio = new IntersectionObserver(([e]) => { if (e.isIntersecting) { flow.classList.add('is-on'); fio.disconnect(); } }, { threshold: .9 });
     fio.observe(flow);
-  }
-  // experience: the first card's tags pop in one by one when it scrolls into view
-  const tg = document.querySelector('.tags[data-reveal]');
-  if (tg && !matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-    [...tg.children].forEach((t, k) => t.style.setProperty('--k', k));
-    tg.classList.add('pre');
-    const tio = new IntersectionObserver(([e]) => { if (e.isIntersecting) { tg.classList.add('is-in'); tio.disconnect(); } }, { threshold: .8 });
-    tio.observe(tg);
   }
   // résumé button: does nothing until the Google Drive link is pasted into its href
   const resume = document.getElementById('resume-link');
