@@ -10,7 +10,7 @@
 <link rel="canonical" href="https://nazir.design/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nazir Hossain">
-<meta property="og:title" content="Nazir Hossain · Character Animator &amp; Motion Designer">
+<meta property="og:title" content="Nazir Hossain · Senior 3D Animator">
 <meta property="og:description" content="Character and creature animator for feature films and episodics. Eight years of keyframe and motion capture work at MPC, Technicolor and Galleri5, now with a hybrid AI workflow.">
 <meta property="og:url" content="https://nazir.design/">
 <meta property="og:image" content="https://nazir.design/og-image.jpg">
@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Nazir Hossain, character animator. Bringing still things to life.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Nazir Hossain · Character Animator &amp; Motion Designer">
+<meta name="twitter:title" content="Nazir Hossain · Senior 3D Animator">
 <meta name="twitter:description" content="Character and creature animator for feature films and episodics. Eight years of keyframe and motion capture work at MPC, Technicolor and Galleri5, now with a hybrid AI workflow.">
 <meta name="twitter:image" content="https://nazir.design/og-image.jpg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-16 0 100 100%22%3E%3Cstyle%3Epath%7Bfill:#131918%7D%40media (prefers-color-scheme:dark)%7Bpath%7Bfill:#eaf1ee%7D%7D%3C/style%3E%3Cpath d=%22M0 30.1 L10.8 24.16 L59 65.38 L59 25.35 L68 30.3 L68 69.9 L57.2 75.84 L9 34.62 L9 74.65 L0 69.7 Z M20 14.6 L29 9.65 L29 33.73 L20 26.03 Z M39 0 L48 4.95 L48 49.97 L39 42.27 Z M29 100 L20 95.05 L20 50.03 L29 57.73 Z M48 85.4 L39 90.35 L39 66.28 L48 73.97 Z%22/%3E%3C/svg%3E">
@@ -638,7 +638,10 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
 #gx-stage .floor { stroke: color-mix(in oklab, var(--ink) 10%, transparent); stroke-width: 1; vector-effect: non-scaling-stroke; }
 #gx-stage .ground { stroke: color-mix(in oklab, var(--ink) 35%, transparent); stroke-width: 1; vector-effect: non-scaling-stroke; }
 #gx-stage .body { fill: var(--ink); }
-#gx-stage .ghost { fill: none; stroke: var(--accent); stroke-width: 1; vector-effect: non-scaling-stroke; }
+#gx-stage .trail { fill: none; stroke: color-mix(in oklab, var(--ink) 22%, transparent); stroke-width: 1; stroke-dasharray: 2 4; vector-effect: non-scaling-stroke; }
+#gx-stage .tdot { fill: color-mix(in oklab, var(--ink) 30%, transparent); }
+#gx-stage .tdot.past { fill: var(--accent); }
+#gx-stage .dust { fill: none; stroke: color-mix(in oklab, var(--ink) 55%, transparent); stroke-width: 1; vector-effect: non-scaling-stroke; }
 #gx-stage .shadow { fill: var(--ink); }
 #gx-stage .vp { font: 500 9px var(--font-mono); letter-spacing: .14em; fill: var(--muted); text-transform: uppercase; }
 /* graph */
@@ -646,6 +649,9 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
 #gx-graph .zero { stroke: color-mix(in oklab, var(--ink) 26%, transparent); stroke-width: 1; vector-effect: non-scaling-stroke; }
 #gx-graph .ax { font: 500 9px var(--font-mono); fill: var(--muted); letter-spacing: .06em; }
 #gx-graph .curve { fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+#gx-graph .rot { fill: none; stroke: color-mix(in oklab, var(--ink) 30%, transparent); stroke-width: 1; stroke-dasharray: 3 4; vector-effect: non-scaling-stroke; }
+#gx-graph .rider { fill: var(--accent); stroke: var(--bg); stroke-width: 1.5; vector-effect: non-scaling-stroke; pointer-events: none; }
+.gx-bar .rz { text-transform: none; letter-spacing: .06em; margin-left: .5em; padding-bottom: 1px; border-bottom: 1px dashed currentColor; }
 #gx-graph .key { fill: var(--ink); }
 #gx-graph .key.hot { fill: var(--accent); }
 #gx-graph .hit { fill: transparent; cursor: grab; touch-action: none; }
@@ -708,6 +714,50 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
 @media (prefers-reduced-motion: reduce) {
   .eq .fx { display: none; }
 }
+
+/* ---------- hero slate: names the film playing behind the headline ---------- */
+.hero-inner { position: relative; }
+.hero-slate { position: absolute; right: var(--gutter-r); bottom: 30px; display: grid; gap: 6px; justify-items: end; text-align: right; color: var(--hero-ink); transition: opacity .18s, transform .18s; }
+.hero-slate.swap { opacity: 0; transform: translateY(6px); }
+.hero-slate .k { display: inline-flex; align-items: center; gap: 8px; font: 500 .62rem/1 var(--font-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--hero-muted); }
+.hero-slate .k::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: rec 1.6s steps(2, jump-none) infinite; }
+.hero-slate b { font: 400 clamp(1rem, 1.5vw, 1.3rem)/1.1 var(--font-display); text-transform: uppercase; letter-spacing: .02em; }
+.hero-slate .s { font: 500 .66rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--hero-muted); }
+@media (max-width: 767px) { .hero-slate { position: static; justify-items: start; text-align: left; } }
+.btn .tri { width: 0; height: 0; border-left: 8px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+
+/* ---------- cinema mode ---------- */
+.cinema { position: fixed; inset: 0; z-index: 90; display: grid; grid-template-rows: auto minmax(0, 1fr); background: #050807; color: var(--hero-ink); }
+.cinema-bar { display: flex; align-items: center; gap: 12px 24px; flex-wrap: wrap; padding: calc(16px + env(safe-area-inset-top, 0px)) var(--gutter-r) 12px var(--gutter-l); font: 500 .7rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.cinema-bar .label { color: var(--hero-muted); margin-right: auto; }
+.cinema-note { color: var(--hero-muted); letter-spacing: .06em; text-transform: none; }
+.cinema-link { color: var(--hero-muted); transition: color .3s; }
+.cinema-link:hover { color: var(--accent); }
+.cinema-close { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding-inline: 16px; border: 1px solid var(--hero-line); border-radius: 2px; font: inherit; letter-spacing: inherit; text-transform: inherit; transition: border-color .3s; }
+.cinema-close:hover { border-color: var(--hero-ink); }
+.cinema-stage { display: grid; place-items: center; min-height: 0; padding: 0 var(--gutter-r) calc(28px + env(safe-area-inset-bottom, 0px)) var(--gutter-l); }
+.cinema-frame { width: min(100%, calc((100svh - 130px) * 16 / 9)); aspect-ratio: 16 / 9; background: #000; }
+.cinema-frame iframe, .cinema-frame video { width: 100%; height: 100%; display: block; border: 0; background: #000; }
+/* letterbox wipe: two bars close over the page, then open on the player */
+.cinema .lb { position: absolute; left: 0; right: 0; height: 50.5%; background: #050807; transform: scaleY(0); transition: transform .5s cubic-bezier(.7, 0, .2, 1); pointer-events: none; z-index: 2; }
+.cinema .lb.top { top: 0; transform-origin: top; } .cinema .lb.bot { bottom: 0; transform-origin: bottom; }
+.cinema.is-shut .lb { transform: scaleY(1); }
+.cinema.is-veil { background: transparent; }
+.cinema.is-veil .cinema-bar, .cinema.is-veil .cinema-stage { visibility: hidden; }
+html.cinema-open .cursor-dot, html.cinema-open .cursor-ring { opacity: 0 !important; }
+html.cinema-open, html.cinema-open a, html.cinema-open button { cursor: auto !important; }
+@media (prefers-reduced-motion: reduce) { .cinema .lb { transition: none; } .hero-slate .k::before { animation: none; } }
+
+/* ---------- hybrid pipeline: signal sparks, landing rings, letter-by-letter step title ---------- */
+#chart .pp-ring { fill: none; stroke: var(--accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; opacity: 0; pointer-events: none; }
+#chart .pp-spark .core { fill: var(--accent); }
+#chart .pp-spark .halo { fill: var(--accent); opacity: .2; }
+/* first frame: the Script box pulses, inviting the scroll */
+#chart.at-start .is-origin .pp-ring { transform-box: fill-box; transform-origin: center; animation: ppInvite 1.9s cubic-bezier(.2, .7, .3, 1) infinite; }
+@keyframes ppInvite { from { opacity: .75; transform: scale(1); } to { opacity: 0; transform: scale(1.32, 1.95); } }
+.pp-hud h3 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+.pp-hud h3 .c { display: inline-block; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { #chart.at-start .is-origin .pp-ring { animation: none; } }
 </style>
 </head>
 <body>
@@ -743,27 +793,32 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
     </div>
     <div class="hero-glow" data-float="70" aria-hidden="true"></div>
     <div class="wrap hero-inner">
-      <p class="eyebrow" data-float="10">Nazir Hossain · Character animator &amp; motion designer</p>
+      <p class="eyebrow" data-float="10">Nazir Hossain · Senior 3D animator · Creatures, characters &amp; machines</p>
       <h1 class="hero-title" aria-label="Bringing still things to life">
         <span class="line" data-float="14" data-split>Bringing</span>
         <span class="line indent" data-float="26" data-split>still things</span>
         <span class="line" data-float="38" data-split>to <em>life</em></span>
       </h1>
-      <p class="hero-lead" data-float="8">I animate characters, products and the odd paper boat, by hand and in 3D. I care about timing, weight, and the tiny pause before a character makes up their mind.</p>
+      <p class="hero-lead" data-float="8">I animate photoreal creatures, characters and machines for feature films and series, in keyframe and motion capture. I care about timing, weight, and the tiny pause before a character makes up their mind.</p>
+      <p class="sr-only">Credits include Mufasa: The Lion King, Transformers: Rise of the Beasts, Kraven the Hunter, Sonic the Hedgehog 2, Prey, Alien: Earth, Vikings: Valhalla, Operation Safed Sagar and Fast &amp; Furious Spy Racers.</p>
       <div class="hero-actions">
-        <a class="btn btn-light" href="https://vimeo.com/1060020092" target="_blank" rel="noopener" data-magnetic data-cursor="Play">Watch showreel <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-light" id="reel-btn" href="https://vimeo.com/1060020092" target="_blank" rel="noopener" data-magnetic data-cursor="Play">Watch showreel <span class="tri" aria-hidden="true"></span></a>
         <a class="btn btn-square" href="#about" aria-label="Scroll to about" data-magnetic>↓</a>
       </div>
+      <!-- slate: names the film behind the headline. Shot times are in the SHOTS list in the hero slate script. -->
+      <div class="hero-slate" id="hero-slate" aria-hidden="true"><span class="k">Now playing</span><b id="slate-t">Showreel</b><span class="s" id="slate-s">2025</span></div>
     </div>
     <div class="ticker" data-speed-base="2.2" aria-hidden="true">
       <div class="ticker-track"><div class="ticker-group">
-        <span>Character animation</span><span class="sep">×</span>
-        <span>Motion design</span><span class="sep">→</span>
-        <span>Storyboards</span><span class="sep">*</span>
-        <span>2D frame-by-frame</span><span class="sep">×</span>
-        <span>3D keyframe</span><span class="sep">→</span>
-        <span>Rigging</span><span class="sep">*</span>
-        <span>Loops &amp; GIFs</span><span class="sep">×</span>
+        <span>Mufasa: The Lion King</span><span class="sep">×</span>
+        <span>Transformers: Rise of the Beasts</span><span class="sep">→</span>
+        <span>Kraven the Hunter</span><span class="sep">*</span>
+        <span>Sonic the Hedgehog 2</span><span class="sep">×</span>
+        <span>Prey</span><span class="sep">→</span>
+        <span>Alien: Earth</span><span class="sep">*</span>
+        <span>Vikings: Valhalla</span><span class="sep">×</span>
+        <span>Operation Safed Sagar</span><span class="sep">→</span>
+        <span>Fast &amp; Furious Spy Racers</span><span class="sep">*</span>
       </div></div>
     </div>
   </section>
@@ -784,10 +839,10 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
       <figure class="gx" id="gx">
         <div class="gx-panel">
           <div class="gx-bar"><span>persp · viewport</span><span>F <b id="gx-frame">01</b></span></div>
-          <svg id="gx-stage" viewBox="0 0 520 200" role="img" aria-label="The NH logo hops in a small viewport, squashing on the ground and stretching in the air, with onion-skin ghosts behind it."></svg>
+          <svg id="gx-stage" viewBox="0 0 520 200" role="img" aria-label="The NH logo crouches, leaps across a small viewport with a full flip, and lands with a squash, leaving a dotted motion trail with one dot per frame."></svg>
         </div>
         <div class="gx-panel">
-          <div class="gx-bar"><span>Graph editor · <span class="acc">translateY</span></span>
+          <div class="gx-bar"><span>Graph editor · <span class="acc">translateY</span> <span class="rz">rotateZ</span></span>
             <div class="gx-modes" role="group" aria-label="Tangent type">
               <button type="button" data-mode="stepped" aria-pressed="false">Stepped</button>
               <button type="button" data-mode="linear" aria-pressed="false">Linear</button>
@@ -954,18 +1009,18 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
     <div class="wrap pipe-head">
       <div class="left">
         <p class="label">Process</p>
-        <h2 class="h2" data-skew>From scribble<br>to screen</h2>
+        <h2 class="h2" data-skew>One shot,<br>six passes</h2>
       </div>
-      <p class="mono-copy">How one shot moves across my desk: the same bouncing ball, taken through six passes from first scribble to final colour.</p>
+      <p class="mono-copy">How one shot moves across my desk: the same bouncing ball, taken through the six passes of a 3D shot, from planning to final.</p>
     </div>
     <div class="pipe-viewport">
       <div class="pipe-track">
-        <figure class="pipe-panel"><canvas data-pipe="1" data-cursor="Drag"></canvas><figcaption><span class="n">01</span><span class="t">Thumbnails</span><small>Tiny, fast and ugly on purpose. Finding the idea before the drawing.</small></figcaption></figure>
-        <figure class="pipe-panel"><canvas data-pipe="2"></canvas><figcaption><span class="n">02</span><span class="t">Key poses</span><small>The storytelling drawings. If the keys read, the shot reads.</small></figcaption></figure>
-        <figure class="pipe-panel"><canvas data-pipe="3"></canvas><figcaption><span class="n">03</span><span class="t">Breakdowns</span><small>The drawings between keys that decide the arc and the overlap.</small></figcaption></figure>
-        <figure class="pipe-panel"><canvas data-pipe="4"></canvas><figcaption><span class="n">04</span><span class="t">In-betweens</span><small>Spacing decides weight. Tight near the top, wide near the floor.</small></figcaption></figure>
-        <figure class="pipe-panel"><canvas data-pipe="5"></canvas><figcaption><span class="n">05</span><span class="t">Clean-up</span><small>One confident line per drawing, with squash and stretch locked in.</small></figcaption></figure>
-        <figure class="pipe-panel"><canvas data-pipe="6"></canvas><figcaption><span class="n">06</span><span class="t">Colour &amp; comp</span><small>Fill, shading, shadow and the final playback at 24 fps.</small></figcaption></figure>
+        <figure class="pipe-panel"><canvas data-pipe="1" data-cursor="Drag"></canvas><figcaption><span class="n">01</span><span class="t">Planning</span><small>Reference and thumbnails. Finding the idea before touching the rig.</small></figcaption></figure>
+        <figure class="pipe-panel"><canvas data-pipe="2"></canvas><figcaption><span class="n">02</span><span class="t">Blocking</span><small>Stepped key poses. If the keys read, the shot reads.</small></figcaption></figure>
+        <figure class="pipe-panel"><canvas data-pipe="3"></canvas><figcaption><span class="n">03</span><span class="t">Blocking plus</span><small>Breakdowns between the keys decide the arc and the overlap.</small></figcaption></figure>
+        <figure class="pipe-panel"><canvas data-pipe="4"></canvas><figcaption><span class="n">04</span><span class="t">Spline</span><small>Curves take over. Spacing decides weight: tight near the top, wide near the floor.</small></figcaption></figure>
+        <figure class="pipe-panel"><canvas data-pipe="5"></canvas><figcaption><span class="n">05</span><span class="t">Polish</span><small>Arcs cleaned, contacts locked, squash and stretch dialled in.</small></figcaption></figure>
+        <figure class="pipe-panel"><canvas data-pipe="6"></canvas><figcaption><span class="n">06</span><span class="t">Final</span><small>Lit, comped and played back at 24 fps.</small></figcaption></figure>
       </div>
     </div>
   </section>
@@ -1051,6 +1106,18 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
     </footer>
   </section>
 </main>
+
+<!-- CINEMA MODE: the showreel plays here, full screen, without leaving the site -->
+<div class="cinema" id="cinema" hidden role="dialog" aria-modal="true" aria-label="Showreel">
+  <div class="cinema-bar">
+    <span class="label">Showreel</span>
+    <span class="cinema-note" id="cinema-note" hidden>Preview: short site cut. The full reel plays on the live site.</span>
+    <a class="cinema-link" href="https://vimeo.com/1060020092" target="_blank" rel="noopener">Open on Vimeo ↗</a>
+    <button type="button" class="cinema-close" id="cinema-close">Close <span aria-hidden="true">✕</span></button>
+  </div>
+  <div class="cinema-stage"><div class="cinema-frame" id="cinema-frame"></div></div>
+  <i class="lb top" aria-hidden="true"></i><i class="lb bot" aria-hidden="true"></i>
+</div>
 
 <div class="timeline" aria-hidden="true">
   <span id="tc">00:00:00:00</span>
@@ -1148,6 +1215,91 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
   };
   menuBtn.addEventListener('click', () => menu.hidden ? openMenu() : closeMenu());
   addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  /* ---------- cinema mode: the showreel plays full screen without leaving the site ---------- */
+  const cinema = $('#cinema'), reelBtn = $('#reel-btn');
+  if (cinema && reelBtn) {
+    const frame = $('#cinema-frame'), note = $('#cinema-note'), closeBtn = $('#cinema-close'), heroReel = $('#reel');
+    const VIMEO = 'https://player.vimeo.com/video/1060020092?autoplay=1&title=0&byline=0&portrait=0&dnt=1';
+    const wipe = reduce ? 0 : 520;
+    let busy = false;
+    // where another site can't be embedded (the private preview), play the short site cut instead
+    const useLocal = () => {
+      if (!frame.querySelector('iframe')) return;
+      frame.innerHTML = '<video src="reel.mp4" controls autoplay loop playsinline></video>'; note.hidden = false;
+    };
+    document.addEventListener('securitypolicyviolation', e => { if (!cinema.hidden && /frame-src|child-src|default-src/.test(e.violatedDirective || '')) useLocal(); });
+    const openCinema = () => {
+      if (busy || !cinema.hidden) return; busy = true;
+      cinema.classList.add('is-veil'); cinema.hidden = false;
+      document.documentElement.classList.add('cinema-open'); lenis && lenis.stop(); heroReel && heroReel.pause();
+      requestAnimationFrame(() => requestAnimationFrame(() => cinema.classList.add('is-shut')));   // bars close over the page
+      setTimeout(() => {
+        frame.innerHTML = `<iframe src="${VIMEO}" title="Nazir Hossain showreel" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+        note.hidden = true;
+        if (/(^|\.)claude\.ai$|claudeusercontent/.test(location.hostname)) useLocal();
+        cinema.classList.remove('is-veil'); cinema.classList.remove('is-shut');   // bars open on the player
+        closeBtn.focus({ preventScroll: true }); busy = false;
+      }, wipe + 40);
+    };
+    const closeCinema = () => {
+      if (busy || cinema.hidden) return; busy = true;
+      cinema.classList.add('is-shut');
+      setTimeout(() => {
+        frame.innerHTML = ''; cinema.classList.add('is-veil'); cinema.classList.remove('is-shut');
+        setTimeout(() => {
+          cinema.hidden = true; cinema.classList.remove('is-veil');
+          document.documentElement.classList.remove('cinema-open'); lenis && lenis.start();
+          if (heroReel) { const p = heroReel.play(); p && p.catch && p.catch(() => {}); }
+          reelBtn.focus({ preventScroll: true }); busy = false;
+        }, wipe);
+      }, wipe + 40);
+    };
+    reelBtn.addEventListener('click', e => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); openCinema(); });
+    closeBtn.addEventListener('click', closeCinema);
+    cinema.addEventListener('click', e => { if (e.target.classList.contains('cinema-stage')) closeCinema(); });
+    addEventListener('keydown', e => {
+      if (cinema.hidden) return;
+      if (e.key === 'Escape') closeCinema();
+      if (e.key === 'Tab') {   // keep focus inside the player
+        const f = [...cinema.querySelectorAll('a[href], button, iframe, video')].filter(x => !x.hidden && x.offsetParent !== null);
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+  }
+
+  /* ---------- hero slate: name the film of the shot playing behind the headline ---------- */
+  const slate = $('#hero-slate'), slateReel = $('#reel');
+  if (slate && slateReel) {
+    // [shot ends at (seconds), film, studio · year]. Edit here if the reel is re-cut.
+    const SHOTS = [
+      [1.75,   'Transformers: Rise of the Beasts', 'MPC · 2023'],
+      [3.708,  'Prey', 'MPC · 2022'],
+      [4.625,  'Kraven the Hunter', 'MPC · 2024'],
+      [5.583,  'Operation Safed Sagar', 'Atomic Arts · 2025'],
+      [7.25,   'Prey', 'MPC · 2022'],
+      [8.25,   'Sonic the Hedgehog 2', 'MPC · 2022'],
+      [8.958,  'Transformers: Rise of the Beasts', 'MPC · 2023'],
+      [10.292, 'Transformers: Rise of the Beasts', 'MPC · 2023'],
+      [12.042, 'Operation Safed Sagar', 'Atomic Arts · 2025'],
+      [99,     'Transformers: Rise of the Beasts', 'MPC · 2023'],
+    ];
+    const st = $('#slate-t'), ss = $('#slate-s');
+    let shown = '', swapT = 0, on = true;
+    const tickSlate = () => {
+      const t = slateReel.currentTime || 0, shot = SHOTS.find(x => t < x[0]) || SHOTS[SHOTS.length - 1];
+      if (shot[1] !== shown) {
+        shown = shot[1]; clearTimeout(swapT);
+        if (reduce) { st.textContent = shot[1]; ss.textContent = shot[2]; }
+        else { slate.classList.add('swap'); swapT = setTimeout(() => { st.textContent = shot[1]; ss.textContent = shot[2]; slate.classList.remove('swap'); }, 150); }
+      }
+      if (on) requestAnimationFrame(tickSlate);
+    };
+    new IntersectionObserver(([e]) => { const was = on; on = e.isIntersecting; if (on && !was) requestAnimationFrame(tickSlate); }).observe(slate);
+    requestAnimationFrame(tickSlate);
+  }
 
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href^="#"]');
@@ -1832,10 +1984,11 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
     frameEls[k] = g;
   });
 
-  const nodeEls = {}, outerEls = {};
+  const nodeEls = {}, outerEls = {}, ringEls = {};
   Object.values(nodes).forEach(nd => {
     const outer = el('g', { transform: `translate(${nd.cx} ${nd.cy})`, class: (nd.kind === 'p' ? 'n-proc' : 'n-tool') + (nd.id === 'final' ? ' is-final' : '') }, gN);
     outerEls[nd.id] = outer;
+    if (nd.kind === 'p') ringEls[nd.id] = el('rect', { x: -nd.w / 2, y: -nd.h / 2, width: nd.w, height: nd.h, rx: 9, class: 'pp-ring' }, outer);
     const g = el('g', { opacity: 0 }, outer);
     if (nd.kind === 'p') {
       el('rect', { x: -nd.w / 2, y: -nd.h / 2, width: nd.w, height: nd.h, rx: 9, class: 'pp-box' }, g);
@@ -1878,7 +2031,10 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
     const len = path.getTotalLength();
     path.setAttribute('stroke-dasharray', len); path.setAttribute('stroke-dashoffset', len);
     const step = b ? Math.max(stepOf[a], stepOf[b]) : stepOf[a];
-    return { path, flow, head, step };
+    // the spark that rides the tip of the line while it draws
+    const spark = el('g', { class: 'pp-spark', opacity: 0 }, gE);
+    el('circle', { r: 7, class: 'halo' }, spark); el('circle', { r: 3, class: 'core' }, spark);
+    return { path, flow, head, step, a, b, len, spark };
   });
 
   // camera: frame each step in the band below the step title
@@ -1927,7 +2083,15 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
     const h00 = 2 * s3 - 3 * s2 + 1, h10 = s3 - 2 * s2 + s, h01 = -2 * s3 + 3 * s2, h11 = s3 - s2;
     return a.v.map((p, j) => h00 * p + h10 * h * a.m[j] + h01 * b.v[j] + h11 * h * b.m[j]);
   };
-  const setCam = t => svg.setAttribute('viewBox', camAt(t).map(v => v.toFixed(2)).join(' '));
+  // the dot grid belongs to the chart's world: it pans and zooms with the camera, so moves have depth
+  const pipeEl = $('#pipe'), GRID = 40;
+  const setCam = t => {
+    const v = camAt(t);
+    svg.setAttribute('viewBox', v.map(n => n.toFixed(2)).join(' '));
+    const W = pipeEl.clientWidth, H = pipeEl.clientHeight, sc = Math.min(W / v[2], H / v[3]);
+    pipeEl.style.backgroundSize = `${(GRID * sc).toFixed(2)}px ${(GRID * sc).toFixed(2)}px`;
+    pipeEl.style.backgroundPosition = `${((W - v[2] * sc) / 2 - v[0] * sc).toFixed(1)}px ${((H - v[3] * sc) / 2 - v[1] * sc).toFixed(1)}px`;
+  };
 
   // HUD and progress rail
   const rail = $('#pp-rail');
@@ -1940,15 +2104,29 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
     if (i === shown) return;
     shown = i;
     const st = STEPS[i];
-    const swap = () => { $('#hud-n').textContent = String(i + 1).padStart(2, '0'); $('#hud-t').textContent = st.t; $('#hud-d').textContent = st.d; };
+    const hudT = $('#hud-t'), hudD = $('#hud-d'), hudN = $('#hud-n');
+    const swap = split => {
+      hudN.textContent = String(i + 1).padStart(2, '0'); hudD.textContent = st.d;
+      if (!split) { hudT.textContent = st.t; return; }
+      // words stay whole so lines break cleanly; each letter rises inside its word
+      hudT.textContent = ''; hudT.setAttribute('aria-label', st.t);
+      st.t.split(' ').forEach((word, wi, arr) => {
+        const w = document.createElement('span'); w.className = 'w'; w.setAttribute('aria-hidden', 'true');
+        [...word].forEach(ch => { const c = document.createElement('span'); c.className = 'c'; c.textContent = ch; w.append(c); });
+        hudT.append(w); if (wi < arr.length - 1) hudT.append(' ');
+      });
+    };
     const G2 = window.gsap, box = $('#hud-txt');
     if (G2 && !reduce && shownOnce) {
-      // slide the old title up and out, then the new one up and in
-      G2.killTweensOf(box);
-      G2.to(box, { opacity: 0, y: -12, duration: .2, ease: 'power2.in', onComplete: () => {
-        swap(); G2.fromTo(box, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .45, ease: 'power3.out' });
+      // the old title lifts out, then the new one rises in letter by letter with its description behind it
+      G2.killTweensOf([box, hudD]); G2.killTweensOf(hudT.querySelectorAll('.c'));
+      G2.to(box, { opacity: 0, y: -10, duration: .16, ease: 'power2.in', onComplete: () => {
+        swap(true); G2.set(box, { opacity: 1, y: 0 });
+        G2.fromTo(hudT.querySelectorAll('.c'), { yPercent: 115, rotate: 6 }, { yPercent: 0, rotate: 0, duration: .6, ease: 'expo.out', stagger: .014 });
+        G2.fromTo(hudD, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .5, ease: 'power3.out', delay: .14 });
       } });
-    } else swap();
+    } else swap(false);
+    svg.classList.toggle('at-start', i === 0);
     shownOnce = true;
     Object.values(outerEls).forEach(o => o.classList.remove('is-active'));
     st.n.forEach(id => outerEls[id].classList.add('is-active'));
@@ -1968,18 +2146,41 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
     });
     STEPS.forEach((st, i) => {
       if (st.frame) tl.fromTo(frameEls[st.frame], { attr: { opacity: 0 } }, { attr: { opacity: 1 }, duration: .3 }, i + .1);
-      st.n.forEach((id, k) => {
-        const nd = nodes[id], g = nodeEls[id];
-        const target = E.find(e => e[0] === id && e[1]);
-        let dx = 0, dy = 0;
-        if (nd.kind === 't' && target) { const T = nodes[target[1]]; const vx = nd.cx - T.cx, vy = nd.cy - T.cy, m = Math.hypot(vx, vy) || 1; dx = vx / m * 60; dy = vy / m * 60; }
-        if (i === 0) { G.set(g, { opacity: 1 }); return; }   // Script is already on stage when the section arrives
-        tl.fromTo(g, { opacity: 0, x: dx, y: dy, scale: nd.kind === 'p' ? .7 : .85, transformOrigin: '50% 50%' },
-          { opacity: 1, x: 0, y: 0, scale: 1, duration: .5, ease: nd.kind === 'p' ? 'back.out(1.6)' : 'power3.out' }, i + .05 + k * .05);
+      if (i === 0) { st.n.forEach(id => { G.set(nodeEls[id], { opacity: 1 }); outerEls[id].classList.add('is-origin'); }); return; }   // Script is on stage when the section arrives
+      // Choreography: a signal runs out along each connector from what is already on stage,
+      // and each new box lands as the signal reaches it. Tools fly in toward the box they feed.
+      const fresh = new Set(st.n), edges = edgeEls.filter(e => e.step === i), land = {};
+      edges.forEach(e => { if (e.b && fresh.has(e.b) && !fresh.has(e.a)) land[e.b] = .36; });        // reached from an older node
+      for (let pass = 0; pass < 3; pass++) edges.forEach(e => {                                        // then node to node, inside the step
+        if (e.b && fresh.has(e.a) && fresh.has(e.b) && land[e.a] !== undefined && land[e.b] === undefined && nodes[e.a].kind === 'p') land[e.b] = Math.min(.74, land[e.a] + .4);
       });
-      edgeEls.filter(e => e.step === i).forEach((e, k) => {
-        tl.to(e.path, { attr: { 'stroke-dashoffset': 0 }, duration: .45, ease: 'power1.inOut' }, i + .35 + k * .02);
-        tl.to([e.head, e.flow], { attr: { opacity: 1 }, duration: .15 }, i + .78 + k * .02);
+      let loose = 0;
+      st.n.forEach(id => { if (land[id] === undefined) land[id] = .1 + (loose++) * .035; });           // everything else (tools) comes in early
+      st.n.forEach(id => {
+        const nd = nodes[id], g = nodeEls[id], at = i + land[id];
+        if (nd.kind === 'p') {
+          tl.fromTo(g, { opacity: 0, scale: .25, y: 16, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, y: 0, duration: .36, ease: 'back.out(2.4)' }, at);
+          const ring = ringEls[id];
+          G.set(ring, { transformOrigin: '50% 50%' });
+          tl.to(ring, { keyframes: [{ opacity: .75, duration: .02 }, { opacity: 0, scaleX: 1.22, scaleY: 1.7, duration: .42, ease: 'power2.out' }] }, at + .06);
+        } else {
+          const target = E.find(e => e[0] === id && e[1]);
+          let dx = 0, dy = 0;
+          if (target) { const T = nodes[target[1]]; const vx = nd.cx - T.cx, vy = nd.cy - T.cy, m = Math.hypot(vx, vy) || 1; dx = vx / m * 70; dy = vy / m * 70; }
+          tl.fromTo(g, { opacity: 0, x: dx, y: dy, scale: .8, rotation: dx >= 0 ? 7 : -7, transformOrigin: '50% 50%' }, { opacity: 1, x: 0, y: 0, scale: 1, rotation: 0, duration: .42, ease: 'power3.out' }, at);
+        }
+      });
+      edges.forEach((e, k) => {
+        const fromFresh = fresh.has(e.a);
+        const start = Math.min(.62, fromFresh ? land[e.a] + .16 : .04 + (k % 4) * .012), dur = fromFresh ? .3 : .34;
+        tl.to(e.path, { attr: { 'stroke-dashoffset': 0 }, duration: dur, ease: 'power1.inOut' }, i + start);
+        const pr = { p: 0 };
+        tl.to(pr, { p: 1, duration: dur, ease: 'power1.inOut', onUpdate: () => {
+          const pt = e.path.getPointAtLength(e.len * pr.p);
+          e.spark.setAttribute('transform', `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)})`);
+          e.spark.setAttribute('opacity', pr.p > .002 && pr.p < .998 ? 1 : 0);
+        } }, i + start);
+        tl.to([e.head, e.flow], { attr: { opacity: 1 }, duration: .12 }, i + start + dur - .02);
       });
     });
     tl.to({}, { duration: .8 }, STEPS.length - 1 + .4);   // linger on the full pipeline (camera lands at this point) before the section unpins
@@ -2023,7 +2224,6 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const stage = document.getElementById('gx-stage'), graph = document.getElementById('gx-graph');
   const frameEl = document.getElementById('gx-frame');
-  const LOGO = 'M0 30.1 L10.8 24.16 L59 65.38 L59 25.35 L68 30.3 L68 69.9 L57.2 75.84 L9 34.62 L9 74.65 L0 69.7 Z M20 14.6 L29 9.65 L29 33.73 L20 26.03 Z M39 0 L48 4.95 L48 49.97 L39 42.27 Z M29 100 L20 95.05 L20 50.03 L29 57.73 Z M48 85.4 L39 90.35 L39 66.28 L48 73.97 Z';
   const FPS = 24, LAST = 48;
 
   // the hop: contact, anticipation, apex, land, recoil, settle. Two keys can be dragged.
@@ -2076,6 +2276,7 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
   mk('line', { class: 'zero', x1: 44, x2: 500, y1: Y(0), y2: Y(0) }, graph);
   [0, 50, 100].forEach(v => Object.assign(mk('text', { class: 'ax', x: 36, y: Y(v) + 3, 'text-anchor': 'end' }, graph), { textContent: v }));
   [1, 12, 24, 36, 48].forEach(f => Object.assign(mk('text', { class: 'ax', x: X(f), y: 202, 'text-anchor': 'middle' }, graph), { textContent: f }));
+  const rotCurve = mk('path', { class: 'rot' }, graph);
   const curve = mk('path', { class: 'curve' }, graph);
   const handles = mk('g', {}, graph);
   const keysG = mk('g', {}, graph);
@@ -2083,6 +2284,7 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
   const phLine = mk('line', { class: 'ph', y1: 20, y2: 186 }, ph);
   const phTag = mk('rect', { class: 'ph-tag', y: 6, width: 26, height: 13, rx: 2 }, ph);
   const phTxt = mk('text', { class: 'ph-txt', y: 15.5, 'text-anchor': 'middle' }, ph);
+  const rider = mk('circle', { class: 'rider', r: 3.4 }, graph);   // rides the curve at the playhead
   const keyEls = K.map(k => {
     const g = mk('g', {}, keysG);
     if (k.drag) mk('circle', { class: 'pulse', r: 7 }, g);
@@ -2100,6 +2302,10 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
       for (let f = 1; f <= LAST; f += .25) d += (f === 1 ? 'M' : ' L') + X(f).toFixed(1) + ' ' + Y(valueAt(f, S)).toFixed(1);
     }
     curve.setAttribute('d', d);
+    // the flip's rotateZ channel, drawn faint behind (0 to 360 degrees on the same 0 to 100 scale)
+    let rd = '';
+    for (let f = 1; f <= LAST; f += .25) rd += (rd ? ' L' : 'M') + X(f).toFixed(1) + ' ' + Y(rotAt(f) / 3.6).toFixed(1);
+    rotCurve.setAttribute('d', rd);
     K.forEach((k, i) => keyEls[i].g.setAttribute('transform', `translate(${X(k.f)} ${Y(k.v)})`));
     // tangent handles on the draggable keys (spline only), the way Maya draws them
     handles.textContent = '';
@@ -2143,47 +2349,80 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
     drawGraph();
   }));
 
-  /* ---- viewport: floor, shadow, onion skins, the logo ---- */
-  const GROUND = 170, CX = 260;
+  /* ---- viewport: the logo leaps across the floor with a flip, leaving a motion trail ---- */
+  const GROUND = 170, CX = 260, XA = 150, XB = 370, SIZE = .7, HALF = 50 * SIZE;
   for (let k = -6; k <= 6; k++) mk('line', { class: 'floor', x1: CX + k * 22, y1: GROUND, x2: CX + k * 120, y2: 214 }, stage);
   mk('line', { class: 'ground', x1: 20, x2: 500, y1: GROUND, y2: GROUND }, stage);
   Object.assign(mk('text', { class: 'vp', x: 14, y: 20 }, stage), { textContent: 'cam_main · 24 fps' });
-  const shadow = mk('ellipse', { class: 'shadow', cx: CX, cy: GROUND + 1.5 }, stage);
-  const ghosts = [6, 4, 2].map((_, i) => mk('path', { class: 'ghost', d: LOGO, opacity: [.14, .26, .42][i] }, stage));
-  const body = mk('path', { class: 'body', d: LOGO }, stage);
-  const SIZE = .7;   // logo is 100 units tall, drawn 70px
-  const poseAt = (f, S) => {
-    const v = valueAt(f, S);
-    const vel = mode === 'stepped' ? 0 : (valueAt(Math.min(LAST, f + .5), S) - valueAt(Math.max(1, f - .5), S));
-    let sy, sx;
-    if (v < 0) { sy = 1 + v * .013; sx = 1 / Math.pow(sy, .75); }   // squash on the ground
-    else {
-      // stretch follows speed smoothly (no hard cap), and fades out near the ground so contact doesn't pop
+  const trailLine = mk('path', { class: 'trail' }, stage);
+  const trailDots = Array.from({ length: LAST }, () => mk('circle', { class: 'tdot', r: 1.7 }, stage));
+  const dust = [mk('ellipse', { class: 'dust' }, stage), mk('ellipse', { class: 'dust' }, stage)];
+  const shadow = mk('ellipse', { class: 'shadow', cy: GROUND + 1.5 }, stage);
+  // the mark in three parts, so the H strokes can pull apart at speed and clamp together on impact
+  const logo = mk('g', {}, stage);
+  mk('path', { class: 'body', d: 'M0 30.1 L10.8 24.16 L59 65.38 L59 25.35 L68 30.3 L68 69.9 L57.2 75.84 L9 34.62 L9 74.65 L0 69.7 Z' }, logo);
+  const partUp = mk('path', { class: 'body', d: 'M20 14.6 L29 9.65 L29 33.73 L20 26.03 Z M39 0 L48 4.95 L48 49.97 L39 42.27 Z' }, logo);
+  const partLo = mk('path', { class: 'body', d: 'M29 100 L20 95.05 L20 50.03 L29 57.73 Z M48 85.4 L39 90.35 L39 66.28 L48 73.97 Z' }, logo);
+
+  // how far through the air the jump is at frame f (0 at launch, 1 at landing)
+  const airU = f => {
+    const launch = K[1].f, apex = K[2].f, land = K[3].f;
+    if (mode === 'stepped') return f < apex ? 0 : f < land ? .5 : 1;
+    return Math.max(0, Math.min(1, (f - launch) / (land - launch)));
+  };
+  // rotateZ channel: one full flip between launch and landing, quickest through the top
+  const rotAt = f => { const u = airU(f); return 360 * (mode === 'spline' ? .35 * u + .65 * u * u * (3 - 2 * u) : u); };
+  const poseAt = (f, dir, S) => {
+    const v = valueAt(f, S), u = airU(f);
+    const vel = mode === 'stepped' ? 0 : valueAt(Math.min(LAST, f + .5), S) - valueAt(Math.max(1, f - .5), S);
+    const from = dir > 0 ? XA : XB, to = dir > 0 ? XB : XA, x = from + (to - from) * u;
+    let sx = 1, sy = 1, spread = 0, phi = 0, lean = 0;
+    if (v < 0) {   // on the ground: squash from the feet, strokes clamp together, lean back before the launch
+      sy = 1 + v * .013; sx = 1 / Math.pow(sy, .75); spread = v * .2;
+      lean = f < K[2].f ? -7 * (v / K[1].v) : 5 * (v / K[4].v);
+    } else {       // in the air: stretch along the direction of travel, strokes pull apart with speed
       const st = .22 * Math.tanh((vel / 9) ** 2) * Math.min(1, v / 8);
-      sy = 1 + st; sx = 1 / (1 + st * .75);
+      sy = 1 + st; sx = 1 / (1 + st * .75); spread = st * 34;
+      const vxs = mode === 'stepped' ? 0 : (to - from) / (K[3].f - K[1].f), vys = -vel * .8;
+      phi = Math.atan2(-vxs, vys) * 180 / Math.PI;
     }
-    return { h: Math.max(0, v) * .9, sx, sy };
+    const h = Math.max(0, v) * .8, w = Math.min(1, h / 20);
+    return { x, h, sx, sy, spread, phi, a: dir * (rotAt(f) + lean), cy: GROUND - h - HALF * (sy * (1 - w) + w) };
   };
-  // on the ground the logo squashes from its feet; in the air it stretches from its centre,
-  // so the top never dips back while the body is still rising
-  const HALF = 50 * SIZE;
-  const place = (el, p) => {
-    const w = Math.min(1, p.h / 20);
-    const cy = GROUND - p.h - HALF * (p.sy * (1 - w) + w);
-    el.setAttribute('transform', `translate(${CX} ${cy}) scale(${p.sx * SIZE} ${p.sy * SIZE}) translate(-34 -50)`);
-  };
-  const drawStage = f => {
-    const S = slopes(), p = poseAt(f, S);
-    place(body, p);
-    [6, 4, 2].forEach((g, i) => { let gf = f - g; if (gf < 1) gf += LAST - 1; place(ghosts[i], poseAt(gf, S)); });
+  const drawStage = (f, dir = 1) => {
+    const S = slopes(), p = poseAt(f, dir, S);
+    logo.setAttribute('transform', `translate(${p.x.toFixed(2)} ${p.cy.toFixed(2)}) rotate(${p.phi.toFixed(2)}) scale(${p.sx.toFixed(4)} ${p.sy.toFixed(4)}) rotate(${(p.a - p.phi).toFixed(2)}) scale(${SIZE}) translate(-34 -50)`);
+    partUp.setAttribute('transform', `translate(0 ${(-p.spread).toFixed(2)})`);
+    partLo.setAttribute('transform', `translate(0 ${p.spread.toFixed(2)})`);
+    // motion trail: the arc of this jump with one dot per frame; dots bunch where the motion is slow
+    const launch = K[1].f, land = K[3].f;
+    let d = '';
+    if (mode !== 'stepped') for (let tf = launch; tf <= land + .01; tf += .5) { const q = poseAt(tf, dir, S); d += (d ? ' L' : 'M') + q.x.toFixed(1) + ' ' + q.cy.toFixed(1); }
+    trailLine.setAttribute('d', d);
+    trailDots.forEach((dot, k) => {
+      const tf = k + 1;
+      if (tf < launch || tf > land) { dot.setAttribute('opacity', 0); return; }
+      const q = poseAt(tf, dir, S);
+      dot.setAttribute('cx', q.x.toFixed(1)); dot.setAttribute('cy', q.cy.toFixed(1));
+      dot.setAttribute('opacity', 1); dot.classList.toggle('past', tf <= f);
+    });
+    // a small puff of dust where it lands
+    const dd = mode === 'stepped' ? -1 : (f - land) / 7, lx = dir > 0 ? XB : XA;
+    dust.forEach((e, k) => {
+      if (dd <= 0 || dd >= 1) { e.setAttribute('opacity', 0); return; }
+      e.setAttribute('cx', lx + (k ? 1 : -1) * (18 + 24 * dd)); e.setAttribute('cy', GROUND - 3 - 5 * dd);
+      e.setAttribute('rx', 3 + 6 * dd); e.setAttribute('ry', 2 + 3.5 * dd); e.setAttribute('opacity', (.55 * (1 - dd)).toFixed(2));
+    });
     const k = Math.max(0, 1 - p.h / 110);
-    shadow.setAttribute('rx', (8 + 26 * k) * (p.sx));
+    shadow.setAttribute('cx', p.x.toFixed(1));
+    shadow.setAttribute('rx', (8 + 26 * k) * p.sx);
     shadow.setAttribute('ry', 2 + 3 * k);
     shadow.setAttribute('opacity', .05 + .16 * k);
     const fi = Math.floor(f);
     frameEl.textContent = String(fi).padStart(2, '0');
     phLine.setAttribute('x1', X(f)); phLine.setAttribute('x2', X(f));
     phTag.setAttribute('x', X(f) - 13); phTxt.setAttribute('x', X(f)); phTxt.textContent = fi;
+    rider.setAttribute('cx', X(f)); rider.setAttribute('cy', Y(valueAt(f, S)));
   };
 
   drawGraph();
@@ -2191,7 +2430,8 @@ html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
   let running = false, raf = 0, last = 0, clock = 0;
   const tick = now => {
     const dt = Math.min(.05, last ? (now - last) / 1000 : 0); last = now; clock += dt;
-    drawStage(1 + (clock * FPS) % (LAST - 1));
+    const fr = clock * FPS;
+    drawStage(1 + fr % (LAST - 1), Math.floor(fr / (LAST - 1)) % 2 ? -1 : 1);   // there, then back again
     if (running) raf = requestAnimationFrame(tick);
   };
   drawStage(1);
